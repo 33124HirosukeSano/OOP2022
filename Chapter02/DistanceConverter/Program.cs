@@ -19,13 +19,12 @@ namespace DistanceConverter {
             }
 
         }
+        
         //フィートからメートルへの対応表を出力
         private static void PrintMeterToFeetList(int start, int stop) {
             for (int meter = start; meter <= stop; meter++) {
 
-                FeetConverter fc = new FeetConverter();
-
-                double feet = fc.ToMeter(meter);
+                double feet = FeetConverter.ToMeter(meter);
                 Console.WriteLine("{0} m = {1:0.0000} ft", feet, meter);
 
             }
@@ -34,9 +33,7 @@ namespace DistanceConverter {
         private static void PrintFeetToMeterList(int start, int stop) {
             for (int feet = start; feet <= stop; feet++) {
 
-                FeetConverter fc = new FeetConverter();
-
-                double meter = fc.FromMeter(feet);
+                double meter = FeetConverter.FromMeter(feet);
                 Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
 
             }
