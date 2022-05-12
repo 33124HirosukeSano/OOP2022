@@ -43,7 +43,7 @@ namespace Exercise {
 
             }
         }
-        private static void PrintSong(List<Song> songs) {
+        private static void PrintSongs(List<Song> songs) {
 
             foreach (var song in songs) {
 
@@ -55,13 +55,12 @@ namespace Exercise {
         }*/
 
 
-            private static void PrintSong(IEnumerable<Song> songs) {
+        private static void PrintSongs(IEnumerable<Song> songs) {
 
             foreach (var song in songs) {
 
                 Console.WriteLine("{0} {1} {2:mm\\:ss}",
                     song.Title, song.ArtistName, TimeSpan.FromSeconds(song.Length));
-
 
             }
         }
