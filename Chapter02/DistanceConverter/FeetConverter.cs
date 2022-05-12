@@ -11,13 +11,13 @@ namespace DistanceConverter {
         //public static readonly double ratio = 0.3048;
        
         //メートルからフィート
-        public static double FromMeter(Double meter) {
+        public static double FromMeter(double meter) {
 
             return meter / ratio;
 
         }
         //フィートからメートルを求める
-        public static double ToMeter(Double feet) {
+        public static double ToMeter(double feet) {
 
             return feet * ratio;
 

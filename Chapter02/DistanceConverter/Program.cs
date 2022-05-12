@@ -10,30 +10,31 @@ namespace DistanceConverter {
 
 
             if (args.Length >= 1 && args[0] == "-tom") {
+
                 PrintFeetToMeterList(1, 10);
 
-            }
-            else {
+            }else {
+
                 PrintMeterToFeetList(1, 10);
 
             }
 
         }
-        
-        //フィートからメートルへの対応表を出力
+
+        //メートルからフィートへの対応表を出力
         private static void PrintMeterToFeetList(int start, int stop) {
             for (int meter = start; meter <= stop; meter++) {
 
-                double feet = FeetConverter.ToMeter(meter);
+                double feet = FeetConverter.FromMeter(meter);
                 Console.WriteLine("{0} m = {1:0.0000} ft", feet, meter);
 
             }
         }
-        //メートルからフィートへの対応表を出力
+        //フィートからメートルへの対応表を出力
         private static void PrintFeetToMeterList(int start, int stop) {
             for (int feet = start; feet <= stop; feet++) {
 
-                double meter = FeetConverter.FromMeter(feet);
+                double meter = FeetConverter.ToMeter(feet);
                 Console.WriteLine("{0} ft = {1:0.0000} m", feet, meter);
 
             }
