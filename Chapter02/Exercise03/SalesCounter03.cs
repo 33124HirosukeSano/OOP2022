@@ -15,7 +15,7 @@ namespace Exercise03 {
         }
 
         //カテゴリ別売り上げを求める
-        public IDictionary<string,int> GetParStoreSales() {
+        public IDictionary<string,int> GetParCaregorySales() {
             var dict = new Dictionary<string, int>();
             foreach (var sale in _sales) {
 
@@ -29,7 +29,22 @@ namespace Exercise03 {
             return dict;
 
         }
-              //売上データを読み込み、Saleオブジェクトのリストを返す
+        //店舗別売り上げを求める
+        public IDictionary<string, int> GetParStoreSales() {
+            var dict = new Dictionary<string, int>();
+            foreach (var sale in _sales) {
+
+                if (dict.ContainsKey(sale.ShopName))
+                    dict[sale.ShopName] += sale.Amount;
+                else
+                    dict[sale.ShopName] = sale.Amount;
+
+            }
+
+            return dict;
+
+        }
+        //売上データを読み込み、Saleオブジェクトのリストを返す
         public static IEnumerable<Sale03> ReadSales(string filePath) {
             List<Sale03> sales = new List<Sale03>();
             string[] lines = File.ReadAllLines(filePath);
