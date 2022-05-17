@@ -35,29 +35,29 @@ namespace Exercise02 {
                 if (string.IsNullOrEmpty(line))
                     break;
 
-                var list = names.FindIndex(n => n == line);
-                Console.Write(list);
-
-
+                var index = names.FindIndex(n => n == line);
+                Console.Write(index);
 
             } while (true);
 
 
         }
 
-        private static void Exercise2_2(object names) {
+        private static void Exercise2_2(List<string> names) {
+
+            var count = names.Count(n => n.Contains("o"));
+            Console.WriteLine(count);
+
+        }
+
+        private static void Exercise2_3(List<string> names) {
+
 
 
 
         }
 
-        private static void Exercise2_3(object names) {
-
-
-
-        }
-
-        private static void Exercise2_4(object names) {
+        private static void Exercise2_4(List<string> names) {
 
 
 
