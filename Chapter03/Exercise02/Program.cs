@@ -52,14 +52,24 @@ namespace Exercise02 {
 
         private static void Exercise2_3(List<string> names) {
 
+            var selected = names.Where(n => n.Contains("o")).ToArray();//配列として抽出
 
+            foreach (var name in selected) {
 
+                Console.WriteLine(name);
 
+            }
         }
 
         private static void Exercise2_4(List<string> names) {
 
+            var selected = names.Where(n => n.StartsWith("B")).Select(n => new { n.Length, n });
 
+            foreach (var name in selected) {
+
+                Console.WriteLine(name);
+
+            }
 
         }
     }

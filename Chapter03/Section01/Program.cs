@@ -15,9 +15,13 @@ namespace Section01 {
             };
 
 
-            var names = list.FindAll(s => s.Length <= 5);
+            /*var names = list.FindAll(s => s.Length <= 5);
+            names.ForEach(s => Console.WriteLine(s));*/
 
-            names.ForEach(s => Console.WriteLine(s));                  
+
+            var names = list.RemoveAll(s => s.Contains("on"));
+            Console.WriteLine(names);
+            list.ForEach(s => Console.WriteLine(s));
 
         }        
     }    
