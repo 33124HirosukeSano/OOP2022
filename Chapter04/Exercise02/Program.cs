@@ -51,17 +51,19 @@ namespace Exercise02 {
 
         private static void Exercise2_6(YearMonth[] ymCollection) {
 
-            foreach (var ym in ymCollection.OrderByDescending(ym => ym.Year)) {
-
+            foreach (var ym in ymCollection.Where(ym => DateTime.IsLeapYear(ym.Year)).OrderBy(ym => ym.Month)) {
+                
                 Console.WriteLine(ym);
 
             }
+
+            var date = ymCollection.Max(ym => ym.Month);
+            Console.WriteLine(date);
 
         }
 
         //4.2.3
         static YearMonth FindFirst21C(YearMonth[] yms) {
-
 
 
             foreach (var ym in yms ) {
@@ -113,7 +115,6 @@ namespace Exercise02 {
                 Console.WriteLine(ym);
 
             }
-
 
         }
     }
