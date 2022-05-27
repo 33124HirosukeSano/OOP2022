@@ -30,23 +30,41 @@ namespace Exercise03 {
         }
 
         private static void Exercise3_1(string text) {
-            throw new NotImplementedException();
+
+            int spaces = text.Count(c => c == ' ');
+            Console.WriteLine("空白数:{0}", spaces);
+
         }
 
         private static void Exercise3_2(string text) {
-            
+
+            var result = text.Replace("big", "small");
+            Console.WriteLine(result);
+
         }
 
         private static void Exercise3_3(string text) {
-            
+
+            string[] words = text.Split(' ');            
+            Console.WriteLine(words.Length);
+
         }
 
         private static void Exercise3_4(string text) {
-            
+
+            string[] words = text.Split(' ');
+            var query = words.Where(s => s.Length <= 4);
+            foreach (var s in query) {
+
+                Console.WriteLine(s);
+
+            }
         }
 
         private static void Exercise3_5(string text) {
             
+            
+
         }
     }
 }
