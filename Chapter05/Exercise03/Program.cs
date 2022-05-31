@@ -52,18 +52,29 @@ namespace Exercise03 {
 
         private static void Exercise3_4(string text) {
 
-            string[] words = text.Split(' ');
-            var query = words.Where(s => s.Length <= 4);
-            foreach (var s in query) {
+            text.Split(' ').Where(s => s.Length <= 4)
+                           .ToList().ForEach(s => Console.WriteLine(s));
 
-                Console.WriteLine(s);
-
-            }
         }
 
         private static void Exercise3_5(string text) {
-            
-            
+
+            var array = text.Split(' ').ToArray();
+            if (array.Length > 0) {
+
+                var sb = new StringBuilder(array[0]);
+
+                foreach (var word in array.Skip(1)) {
+
+                    sb.Append(word);
+                    sb.Append(' ');
+
+                }
+                var str = sb.ToString();
+                Console.WriteLine(str);
+
+            }
+
 
         }
     }
