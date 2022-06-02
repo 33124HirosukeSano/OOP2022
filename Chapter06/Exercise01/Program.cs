@@ -34,10 +34,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-
-
-            var results = numbers.Where(s => s >= 0);                       
-            foreach (var num in results.Skip(9)) {
+                       
+            foreach (var num in numbers.Skip(numbers.Length - 2)) {
 
                 Console.WriteLine(num);
 
@@ -46,20 +44,34 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3(int[] numbers) {
-            
 
+            var str = numbers.Select(s => s.ToString());
+            foreach (var s in str) {
 
+                Console.WriteLine(s);
+
+            }
         }
 
         private static void Exercise1_4(int[] numbers) {
-            
 
+            var sortnum = numbers.OrderBy(n => n).ToArray().Take(3);
+            foreach (var num in sortnum) {
+
+                Console.WriteLine(num);
+
+            }
 
         }
 
         private static void Exercise1_5(int[] numbers) {
-            
 
+            var results = numbers.Distinct().Where(n => n > 10);
+            foreach (var num in results) {
+
+                Console.WriteLine(num);
+
+            }
 
         }
     }
