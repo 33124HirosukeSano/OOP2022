@@ -66,12 +66,8 @@ namespace Exercise01 {
 
         private static void Exercise1_5(int[] numbers) {
 
-            var results = numbers.Distinct().Where(n => n > 10);
-            foreach (var num in results) {
-
-                Console.WriteLine(num);
-
-            }
+            var results = numbers.Distinct().Count(n => n > 10);
+            Console.WriteLine(results);
 
         }
     }

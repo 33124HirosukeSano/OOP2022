@@ -41,7 +41,9 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_1(List<Book> books) {
-            
+
+            //var titlesrc = books.Any(t );
+
         }
 
         private static void Exercise2_2(List<Book> books) {
