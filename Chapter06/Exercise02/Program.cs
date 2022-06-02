@@ -91,7 +91,15 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
-            
+
+            var sortprice = books.Where(t => t.Pages >= 400).OrderByDescending(t => t.Price).ToArray();
+            foreach (var detail in sortprice) {
+
+                Console.WriteLine("{0} {1}", detail.Title, detail.Price);
+
+            }
+
+
         }
 
         private static void Exercise2_7(List<Book> books) {
