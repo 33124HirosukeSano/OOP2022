@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exercise02 {
     class Program {
+
         static void Main(string[] args) {
             var books = new List<Book> {
                 new Book { Title = "C#プログラミングの新常識", Price = 3800, Pages = 378 },
@@ -15,7 +16,9 @@ namespace Exercise02 {
                 new Book { Title = "フレーズで覚えるC#入門", Price = 5300, Pages = 604 },
                 new Book { Title = "私でも分かったASP.NET MVC", Price = 3200, Pages = 453 },
                 new Book { Title = "楽しいC#プログラミング教室", Price = 2540, Pages = 348 },
-    };
+            };
+
+            
 
             Exercise2_1(books);
             Console.WriteLine("-----");
@@ -38,8 +41,12 @@ namespace Exercise02 {
             Console.WriteLine("-----");
 
             Exercise2_7(books);
-        }
+            Console.WriteLine("-----");
 
+            Exercise2_8(books);
+
+        }
+        
         private static void Exercise2_1(List<Book> books) {
 
             var book = books.FirstOrDefault(t => t.Title == "ワンダフル・C#ライフ");
@@ -104,7 +111,7 @@ namespace Exercise02 {
 
         private static void Exercise2_7(List<Book> books) {
 
-            var page = books.Where(t => t.Title.Contains("C#")).Where(t => t.Pages <= 500);
+            var page = books.Where(t => t.Title.Contains("C#") && t.Pages <= 500);
 
             foreach (var titlesrc in page) {
 
@@ -113,6 +120,17 @@ namespace Exercise02 {
             }
 
         }
-    }
-    
+
+        private static void Exercise2_8(List<Book> books) {
+
+            foreach (var titles in books.Select((b,i) => new { i, b.Title })) {
+               
+                Console.WriteLine((titles.i + 1) + "冊目:" + titles.Title);
+
+            }
+
+        }
+
+        
+    }   
 }
