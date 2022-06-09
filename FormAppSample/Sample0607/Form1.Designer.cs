@@ -28,7 +28,11 @@ namespace Sample0607 {
             this.btAns = new System.Windows.Forms.Button();
             this.nudNum = new System.Windows.Forms.NumericUpDown();
             this.celebrate = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nudManifesto = new System.Windows.Forms.NumericUpDown();
+            this.serviceController1 = new System.ServiceProcess.ServiceController();
             ((System.ComponentModel.ISupportInitialize)(this.nudNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManifesto)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -36,11 +40,11 @@ namespace Sample0607 {
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(96, 33);
+            this.label1.Location = new System.Drawing.Point(65, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(528, 64);
+            this.label1.Size = new System.Drawing.Size(124, 64);
             this.label1.TabIndex = 0;
-            this.label1.Text = "1～50の中から入力";
+            this.label1.Text = "1～";
             // 
             // btAns
             // 
@@ -71,21 +75,44 @@ namespace Sample0607 {
             this.celebrate.Size = new System.Drawing.Size(0, 35);
             this.celebrate.TabIndex = 4;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Location = new System.Drawing.Point(331, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(368, 64);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "の中から入力";
+            // 
+            // nudManifesto
+            // 
+            this.nudManifesto.Font = new System.Drawing.Font("MS UI Gothic", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.nudManifesto.Location = new System.Drawing.Point(195, 29);
+            this.nudManifesto.Name = "nudManifesto";
+            this.nudManifesto.Size = new System.Drawing.Size(120, 67);
+            this.nudManifesto.TabIndex = 5;
+            this.nudManifesto.ValueChanged += new System.EventHandler(this.nudManifesto_ValueChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(718, 307);
+            this.Controls.Add(this.nudManifesto);
             this.Controls.Add(this.celebrate);
             this.Controls.Add(this.nudNum);
             this.Controls.Add(this.btAns);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.Text = "乱数アプリ";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudManifesto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,6 +124,9 @@ namespace Sample0607 {
         private System.Windows.Forms.Button btAns;
         private System.Windows.Forms.NumericUpDown nudNum;
         private System.Windows.Forms.Label celebrate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown nudManifesto;
+        private System.ServiceProcess.ServiceController serviceController1;
     }
 }
 

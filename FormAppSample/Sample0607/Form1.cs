@@ -23,9 +23,8 @@ namespace Sample0607 {
 
         private void Form1_Load(object sender, EventArgs e) {
 
-
-            randomNumber = rand.Next(49) + 1;
-
+            randomNumber = rand.Next((int)nudManifesto.Value)+1;
+            this.Text = randomNumber.ToString();
 
         }
 
@@ -43,5 +42,18 @@ namespace Sample0607 {
             }
 
         }
+
+        private void nudManifesto_ValueChanged(object sender, EventArgs e) {
+
+            getRandom();
+
+        }
+        private void getRandom() {
+
+            randomNumber = rand.Next((int)nudManifesto.Value) + 1;
+            this.Text = randomNumber.ToString();
+
+        }
+
     }
 }
