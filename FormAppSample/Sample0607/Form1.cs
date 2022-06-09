@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPOI.SS.Formula.Functions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,29 +11,36 @@ using System.Windows.Forms;
 
 namespace Sample0607 {
     public partial class Form1 : Form {
+
+        private Random rand = new Random();
+        private int randomNumber;
+
+
         public Form1() {
             InitializeComponent();
         }
+      
 
-        private void button1_Click(object sender, EventArgs e) {            
+        private void Form1_Load(object sender, EventArgs e) {
 
-            /*if (int.Parse(tbNum2.Text) != 0) {
-                tbAns.Text = Math.DivRem(int.Parse(tbNum1.Text), int.Parse(tbNum2.Text), out var rem).ToString();
-                tbMod.Text = rem.ToString();
+
+            randomNumber = rand.Next(49) + 1;
+
+
+        }
+
+        private void btAns_Click_1(object sender, EventArgs e) {
+
+
+            if (nudNum.Value == randomNumber) {
+
+                celebrate.Text = "当たり";
+
             } else {
 
-                MessageBox.Show("0以外を入力してください。","エラー",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                celebrate.Text = "はずれ";
 
-            }*/
-
-            if (nudNum2.Value != 0) {
-                nudAns.Value = nudNum1.Value / nudNum2.Value;
-                nudMod.Value = nudNum1.Value % nudNum2.Value;
-            } else {
-
-                MessageBox.Show("0で割り算できません。", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }            
+            }
 
         }
     }
