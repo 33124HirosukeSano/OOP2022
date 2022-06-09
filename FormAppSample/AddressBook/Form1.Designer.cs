@@ -42,7 +42,7 @@ namespace AddressBook {
             this.btPictureOpen = new System.Windows.Forms.Button();
             this.dgvPersons = new System.Windows.Forms.DataGridView();
             this.btPictureClear = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ofdFileOpenDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +76,6 @@ namespace AddressBook {
             this.label3.Size = new System.Drawing.Size(66, 27);
             this.label3.TabIndex = 0;
             this.label3.Text = "住所";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -105,7 +104,6 @@ namespace AddressBook {
             this.label5.Size = new System.Drawing.Size(97, 27);
             this.label5.TabIndex = 0;
             this.label5.Text = "グループ";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // tbMeilAddress
             // 
@@ -181,6 +179,7 @@ namespace AddressBook {
             this.btAddPerson.TabIndex = 3;
             this.btAddPerson.Text = "追加";
             this.btAddPerson.UseVisualStyleBackColor = true;
+            this.btAddPerson.Click += new System.EventHandler(this.btAddPerson_Click);
             // 
             // pbPicture
             // 
@@ -198,6 +197,7 @@ namespace AddressBook {
             this.btPictureOpen.TabIndex = 5;
             this.btPictureOpen.Text = "開く...";
             this.btPictureOpen.UseVisualStyleBackColor = true;
+            this.btPictureOpen.Click += new System.EventHandler(this.btPictureOpen_Click);
             // 
             // dgvPersons
             // 
@@ -207,7 +207,6 @@ namespace AddressBook {
             this.dgvPersons.RowTemplate.Height = 21;
             this.dgvPersons.Size = new System.Drawing.Size(880, 186);
             this.dgvPersons.TabIndex = 6;
-            this.dgvPersons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btPictureClear
             // 
@@ -217,10 +216,11 @@ namespace AddressBook {
             this.btPictureClear.TabIndex = 5;
             this.btPictureClear.Text = "クリア";
             this.btPictureClear.UseVisualStyleBackColor = true;
+            this.btPictureClear.Click += new System.EventHandler(this.btPictureClear_Click);
             // 
-            // openFileDialog1
+            // ofdFileOpenDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.ofdFileOpenDialog.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -246,7 +246,7 @@ namespace AddressBook {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "住所緑アプリ";
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             this.ResumeLayout(false);
@@ -274,7 +274,7 @@ namespace AddressBook {
         private System.Windows.Forms.Button btPictureOpen;
         private System.Windows.Forms.DataGridView dgvPersons;
         private System.Windows.Forms.Button btPictureClear;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog ofdFileOpenDialog;
     }
 }
 

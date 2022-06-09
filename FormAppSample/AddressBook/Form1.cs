@@ -10,19 +10,47 @@ using System.Windows.Forms;
 
 namespace AddressBook {
     public partial class Form1 : Form {
+
+        //住所データ管理用リスト
+        BindingList<Person> listPerson = new BindingList<Person>();
+
         public Form1() {
+
             InitializeComponent();
+            dgvPersons.DataSource = listPerson;
+            
+
+        }       
+
+        private void btPictureOpen_Click(object sender, EventArgs e) {
+
+            if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
+
+                pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
+
+            }            
+
         }
 
-        private void label3_Click(object sender, EventArgs e) {
+        private void btAddPerson_Click(object sender, EventArgs e) {
+
+            Person newPerson = new Person {
+
+                Name = tbName.Text,
+                MailAddress = tbMeilAddress.Text,
+                Address = tbAddress.Text,
+                Company = tbCompany.Text,
+                Picture = pbPicture.Image,
+
+            };
+
+            listPerson.Add(newPerson);
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void btPictureClear_Click(object sender, EventArgs e) {
 
-        }
-
-        private void label5_Click(object sender, EventArgs e) {
+            pbPicture.Image = null;
 
         }
     }
