@@ -41,6 +41,7 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = tbCompany.Text,
                 Picture = pbPicture.Image,
+                listGroup = GetCheckBoxGroup(),
 
             };
 
@@ -48,10 +49,82 @@ namespace AddressBook {
 
         }
 
+        //チェックボックスにセットされている値をリストとして取り出す
+        private List<Person.GroupType> GetCheckBoxGroup() {
+
+            var listGroup = new List<Person.GroupType>();
+
+            if (cbFamily.Checked) {
+
+                listGroup.Add(Person.GroupType.家族);
+
+            }
+            if (cbFriend.Checked) {
+
+                listGroup.Add(Person.GroupType.友人);
+
+            }
+            if (cbWork.Checked) {
+
+                listGroup.Add(Person.GroupType.仕事);
+
+            }
+            if (cbOther.Checked) {
+
+                listGroup.Add(Person.GroupType.その他);
+
+            }
+
+
+            return listGroup;
+        }
+
         private void btPictureClear_Click(object sender, EventArgs e) {
 
             pbPicture.Image = null;
 
         }
+
+        //データグリットビューをクリックした時のイベントハンドラ
+        private void dgvPersons_Click(object sender, EventArgs e) {
+
+            int index = dgvPersons.CurrentRow.Index;
+            //tbName.Text = listPerson[index].Name;
+            //tbMeilAddress.Text = listPerson[index].MailAddress;
+            //tbAddress.Text = listPerson[index].Address;
+            //tbCompany.Text = listPerson[index].Company;
+
+
+            tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
+            tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
+            tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
+            tbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
+            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
+
+
+
+            foreach (var group in listPerson[index].listGroup) {                
+
+                switch (group) {
+                    case Person.GroupType.家族:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.友人:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.仕事:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.その他:
+                        cbFamily.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+
+            }            
+
+        }
+
     }
 }
