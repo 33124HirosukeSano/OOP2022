@@ -27,9 +27,10 @@ namespace AddressBook {
             if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
 
                 pbPicture.Image = Image.FromFile(ofdFileOpenDialog.FileName);
+                btPictureClear.Enabled = true;
 
-            }            
-
+            }
+            
         }
 
         private void btAddPerson_Click(object sender, EventArgs e) {
@@ -46,6 +47,9 @@ namespace AddressBook {
             };
 
             listPerson.Add(newPerson);
+
+            btUpdate.Enabled = true;
+            btDeletion.Enabled = true;
 
         }
 
@@ -82,11 +86,18 @@ namespace AddressBook {
         private void btPictureClear_Click(object sender, EventArgs e) {
 
             pbPicture.Image = null;
+            btPictureClear.Enabled = false;
 
         }
 
         //データグリットビューをクリックした時のイベントハンドラ
         private void dgvPersons_Click(object sender, EventArgs e) {
+
+            if (dgvPersons.CurrentRow == null) {
+
+                return;
+
+            }
 
             int index = dgvPersons.CurrentRow.Index;
             //tbName.Text = listPerson[index].Name;
@@ -131,5 +142,68 @@ namespace AddressBook {
             cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
 
         }
+
+        //データが更新された時の処理
+        private void btUpdate_Click(object sender, EventArgs e) {
+
+            listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
+            listPerson[dgvPersons.CurrentRow.Index].MailAddress = tbMeilAddress.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Company = tbCompany.Text;
+            listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
+            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
+
+            dgvPersons.Refresh();
+            
+        }
+
+        private void btDeletion_Click(object sender, EventArgs e) {
+
+            /*DialogResult result = MessageBox.Show("削除しますか?","注意",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+
+            if (result == DialogResult.Yes) {
+
+                listPerson.RemoveAt(dgvPersons.CurrentRow.Index);            
+
+                }
+            }*/
+
+            listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
+
+            
+
+            tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
+            tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
+            tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
+            tbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
+            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
+
+            groupCheckBoxAllClear();
+
+            int index = dgvPersons.CurrentRow.Index;
+            foreach (var group in listPerson[index].listGroup) {
+
+                switch (group) {
+                    case Person.GroupType.家族:
+                        cbFamily.Checked = true;
+                        break;
+                    case Person.GroupType.友人:
+                        cbFriend.Checked = true;
+                        break;
+                    case Person.GroupType.仕事:
+                        cbWork.Checked = true;
+                        break;
+                    case Person.GroupType.その他:
+                        cbOther.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        }
+          
+            
+        
     }
 }
