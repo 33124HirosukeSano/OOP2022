@@ -101,30 +101,35 @@ namespace AddressBook {
             tbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
             pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
 
+            groupCheckBoxAllClear();
 
-
-            foreach (var group in listPerson[index].listGroup) {                
+            foreach (var group in listPerson[index].listGroup) {
 
                 switch (group) {
                     case Person.GroupType.家族:
                         cbFamily.Checked = true;
                         break;
                     case Person.GroupType.友人:
-                        cbFamily.Checked = true;
+                        cbFriend.Checked = true;
                         break;
                     case Person.GroupType.仕事:
-                        cbFamily.Checked = true;
+                        cbWork.Checked = true;
                         break;
                     case Person.GroupType.その他:
-                        cbFamily.Checked = true;
+                        cbOther.Checked = true;
                         break;
                     default:
                         break;
                 }
 
-            }            
+            }
 
         }
 
+        private void groupCheckBoxAllClear() {
+
+            cbFamily.Checked = cbFriend.Checked = cbWork.Checked = cbOther.Checked = false;
+
+        }
     }
 }
