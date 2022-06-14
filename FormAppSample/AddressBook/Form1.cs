@@ -46,10 +46,31 @@ namespace AddressBook {
 
             };
 
-            listPerson.Add(newPerson);
+            //listPerson.Add(newPerson);
+            if (listPerson.Count >= 0) {
 
-            btUpdate.Enabled = true;
-            btDeletion.Enabled = true;
+                btUpdate.Enabled = true;
+                btDeletion.Enabled = true;
+
+            }
+            
+
+            if (String.IsNullOrEmpty(tbName.Text) == true || String.IsNullOrEmpty(tbMeilAddress.Text) == true || String.IsNullOrEmpty(tbAddress.Text) == true || String.IsNullOrEmpty(tbCompany.Text) == true) {
+
+                MessageBox.Show("空欄があります。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
+            } else {
+
+                listPerson.Add(newPerson);
+                if (listPerson.Count() >= 0) {
+
+                btUpdate.Enabled = true;
+                btDeletion.Enabled = true;
+
+            }
+
+            }
 
         }
 
@@ -201,6 +222,15 @@ namespace AddressBook {
                 }
 
             }
+
+            if (listPerson.Count() == 0) {
+
+                btUpdate.Enabled = false;
+                btDeletion.Enabled = false;
+
+
+            }
+
         }
           
             
