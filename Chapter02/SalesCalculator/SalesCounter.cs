@@ -15,7 +15,7 @@ namespace SalesCalculator {
         }
 
         //店舗別売り上げを求める
-        public IDictionary<string,int> GetParStoreSales() {
+        private IDictionary<string,int> GetParStoreSales() {
             var dict = new Dictionary<string, int>();
             foreach (var sale in _sales) {
 

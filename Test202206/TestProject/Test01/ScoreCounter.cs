@@ -13,8 +13,31 @@ namespace Test01 {
         }
 
 
-        //メソッドの概要： 
-        private static IEnumerable<Student> ReadScore(string filePath) {
+        //得点データを読み込み、Studentオブジェクトのリストを返す
+        private IEnumerable<Student> ReadScore(string filePath) {
+            List<Student> score = new List<Student>();
+            string[] lines = File.ReadAllLines(filePath);
+            foreach (string line in lines) {
+                string[] items = line.Split(',');
+                Student student = new Student {
+
+                    Subject = items[0],
+                    Name = items[1],
+                    Score = int.Parse(items[2])
+
+                };
+                score.Add(student);
+            }
+
+
+
+            return score;
+
+
+        }
+
+        //生徒の合計点： 
+        public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
             foreach (var score in _score) {
 
@@ -26,29 +49,6 @@ namespace Test01 {
             }
 
             return dict;
-
-
-        }
-
-        //メソッドの概要： 
-        public IDictionary<string, int> GetPerStudentScore() {
-            List<Student> sales = new List<Student>();
-            string[] lines = File.ReadAllLines(filePath);
-            foreach (string line in lines) {
-                string[] items = line.Split(',');
-                core sale = new Sale {
-
-                    ShopName = items[0],
-                    ProductCaregory = items[1],
-                    Amount = int.Parse(items[2])
-
-                };
-                sales.Add(sale);
-            }
-
-
-
-            return sales;
 
         }
     }
