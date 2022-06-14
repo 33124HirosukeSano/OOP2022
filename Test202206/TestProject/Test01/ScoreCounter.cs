@@ -36,7 +36,7 @@ namespace Test01 {
 
         }
 
-        //生徒の合計点： 
+        //生徒別の合計点： 
         public IDictionary<string, int> GetPerStudentScore() {
             var dict = new Dictionary<string, int>();
             foreach (var score in _score) {
