@@ -40,7 +40,7 @@ namespace AddressBook {
                 Name = tbName.Text,
                 MailAddress = tbMeilAddress.Text,
                 Address = tbAddress.Text,
-                Company = tbCompany.Text,
+                Company = cbCompany.Text,
                 Picture = pbPicture.Image,
                 listGroup = GetCheckBoxGroup(),
 
@@ -53,11 +53,12 @@ namespace AddressBook {
                 btDeletion.Enabled = true;
 
             }
-            
 
-            if (String.IsNullOrEmpty(tbName.Text) == true || String.IsNullOrEmpty(tbMeilAddress.Text) == true || String.IsNullOrEmpty(tbAddress.Text) == true || String.IsNullOrEmpty(tbCompany.Text) == true) {
+
+            if (String.IsNullOrWhiteSpace(tbName.Text)) {
 
                 MessageBox.Show("空欄があります。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
 
 
             } else {
@@ -65,12 +66,21 @@ namespace AddressBook {
                 listPerson.Add(newPerson);
                 if (listPerson.Count() >= 0) {
 
-                btUpdate.Enabled = true;
-                btDeletion.Enabled = true;
+                    btUpdate.Enabled = true;
+                    btDeletion.Enabled = true;
+
+                }
 
             }
 
+            //コンボボックスに会社名を登録する(重複なし)
+            if (!cbCompany.Items.Contains(cbCompany.Text)) {
+
+                //まだ登録されていなければ登録処理
+                cbCompany.Items.Add(cbCompany.Text);
+
             }
+                                          
 
         }
 
@@ -130,7 +140,7 @@ namespace AddressBook {
             tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
             tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
             tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
-            tbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
+            cbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
             pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
 
             groupCheckBoxAllClear();
@@ -170,7 +180,7 @@ namespace AddressBook {
             listPerson[dgvPersons.CurrentRow.Index].Name = tbName.Text;
             listPerson[dgvPersons.CurrentRow.Index].MailAddress = tbMeilAddress.Text;
             listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
-            listPerson[dgvPersons.CurrentRow.Index].Company = tbCompany.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Company = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
             listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
 
@@ -196,7 +206,7 @@ namespace AddressBook {
             tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
             tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
             tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
-            tbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
+            cbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
             pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
 
             groupCheckBoxAllClear();
