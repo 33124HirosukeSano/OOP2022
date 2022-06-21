@@ -55,7 +55,7 @@ namespace AddressBook {
                 btDeletion.Enabled = true;
 
             }
-
+            
 
             if (String.IsNullOrWhiteSpace(tbName.Text)) {
 
@@ -66,10 +66,10 @@ namespace AddressBook {
             } else {
 
                 listPerson.Add(newPerson);
-                EnabledCheck();
+                EnabledCheck();                
 
             }
-            
+
             setCbCompany(cbCompany.Text);
 
         }
@@ -135,7 +135,7 @@ namespace AddressBook {
             //tbName.Text = listPerson[index].Name;
             //tbMeilAddress.Text = listPerson[index].MailAddress;
             //tbAddress.Text = listPerson[index].Address;
-            //tbCompany.Text = listPerson[index].Company;
+            //cbCompany.Text = listPerson[index].Company;
 
 
             tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
@@ -262,9 +262,12 @@ namespace AddressBook {
 
                 }
 
+                cbCompany.Items.Clear();
+
                 EnabledCheck();
 
                 foreach (var item in listPerson.Select(p => p.Company)) {
+
 
                     //すでに存在する会社を登録
                     setCbCompany(item);
