@@ -44,18 +44,14 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
+                Registration = dtpRegistration.Value,
                 listGroup = GetCheckBoxGroup(),
 
             };
 
             //listPerson.Add(newPerson);
-            if (listPerson.Count >= 0) {
+            EnabledCheck();
 
-                btUpdate.Enabled = true;
-                btDeletion.Enabled = true;
-
-            }
-            
 
             if (String.IsNullOrWhiteSpace(tbName.Text)) {
 
@@ -66,7 +62,7 @@ namespace AddressBook {
             } else {
 
                 listPerson.Add(newPerson);
-                EnabledCheck();                
+                EnabledCheck();
 
             }
 
@@ -142,7 +138,8 @@ namespace AddressBook {
             tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
             tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
             cbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
-            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
+            dtpRegistration.Value = (DateTime)dgvPersons.CurrentRow.Cells[4].Value;
+            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[5].Value;
 
             groupCheckBoxAllClear();
 
@@ -185,6 +182,7 @@ namespace AddressBook {
             listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
             listPerson[dgvPersons.CurrentRow.Index].Company = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
+            listPerson[dgvPersons.CurrentRow.Index].Registration = dtpRegistration.Value;
             listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
 
             dgvPersons.Refresh();
