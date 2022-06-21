@@ -44,8 +44,10 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
-                Registration = dtpRegistration.Value,
+                Registration = dtpRegistDate.Value,
                 listGroup = GetCheckBoxGroup(),
+                TellNumber = tbTellNumber.Text,
+
 
             };
 
@@ -109,7 +111,7 @@ namespace AddressBook {
 
             return listGroup;
 
-        }
+        }        
 
         private void btPictureClear_Click(object sender, EventArgs e) {
 
@@ -132,14 +134,16 @@ namespace AddressBook {
             //tbMeilAddress.Text = listPerson[index].MailAddress;
             //tbAddress.Text = listPerson[index].Address;
             //cbCompany.Text = listPerson[index].Company;
-
+            //pbPicture.Image = listPerson[index].Picture;
+            //dtpRegistDate.Value = listPerson[index].Registration.Year > 1900 ?
 
             tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
             tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
             tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
             cbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
-            dtpRegistration.Value = (DateTime)dgvPersons.CurrentRow.Cells[4].Value;
-            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[5].Value;
+            tbTellNumber.Text = (String)dgvPersons.CurrentRow.Cells[6].Value;
+            dtpRegistDate.Value = (DateTime)dgvPersons.CurrentRow.Cells[7].Value;
+            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[8].Value;
 
             groupCheckBoxAllClear();
 
@@ -163,9 +167,7 @@ namespace AddressBook {
                         break;
 
                 }
-
-            }
-
+            }            
         }
 
         private void groupCheckBoxAllClear() {
@@ -182,8 +184,9 @@ namespace AddressBook {
             listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
             listPerson[dgvPersons.CurrentRow.Index].Company = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
-            listPerson[dgvPersons.CurrentRow.Index].Registration = dtpRegistration.Value;
-            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
+            listPerson[dgvPersons.CurrentRow.Index].TellNumber = tbTellNumber.Text;
+            listPerson[dgvPersons.CurrentRow.Index].Registration = dtpRegistDate.Value;
+            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;            
 
             dgvPersons.Refresh();
             
@@ -279,6 +282,17 @@ namespace AddressBook {
         private void Form1_Load(object sender, EventArgs e) {
 
             EnabledCheck();
+            
+
+        }
+
+        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+            //dgvPersons.CellDoubleClick
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
 
         }
     }
