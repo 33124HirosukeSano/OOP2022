@@ -310,6 +310,7 @@ namespace AddressBook {
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "住所録ソフト";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             this.ResumeLayout(false);

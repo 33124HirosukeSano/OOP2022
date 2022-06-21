@@ -66,12 +66,7 @@ namespace AddressBook {
             } else {
 
                 listPerson.Add(newPerson);
-                if (listPerson.Count() >= 0) {
-
-                    btUpdate.Enabled = true;
-                    btDeletion.Enabled = true;
-
-                }
+                EnabledCheck();
 
             }
             
@@ -84,7 +79,7 @@ namespace AddressBook {
             if (!cbCompany.Items.Contains(company)) {
 
                 //まだ登録されていなければ登録処理
-                cbCompany.Items.Add(cbCompany.Text);
+                cbCompany.Items.Add(company);
 
             }
         }
@@ -117,6 +112,7 @@ namespace AddressBook {
 
 
             return listGroup;
+
         }
 
         private void btPictureClear_Click(object sender, EventArgs e) {
@@ -153,6 +149,7 @@ namespace AddressBook {
             foreach (var group in listPerson[index].listGroup) {
 
                 switch (group) {
+
                     case Person.GroupType.家族:
                         cbFamily.Checked = true;
                         break;
@@ -167,6 +164,7 @@ namespace AddressBook {
                         break;
                     default:
                         break;
+
                 }
 
             }
@@ -195,56 +193,20 @@ namespace AddressBook {
 
         private void btDeletion_Click(object sender, EventArgs e) {
 
-            /*DialogResult result = MessageBox.Show("削除しますか?","注意",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
-
-            if (result == DialogResult.Yes) {
-
-                listPerson.RemoveAt(dgvPersons.CurrentRow.Index);            
-
-                }
-            }*/
-
+            
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
 
             
 
-            tbName.Text = (String)dgvPersons.CurrentRow.Cells[0].Value;
-            tbMeilAddress.Text = (String)dgvPersons.CurrentRow.Cells[1].Value;
-            tbAddress.Text = (String)dgvPersons.CurrentRow.Cells[2].Value;
-            cbCompany.Text = (String)dgvPersons.CurrentRow.Cells[3].Value;
-            pbPicture.Image = (Image)dgvPersons.CurrentRow.Cells[4].Value;
+                EnabledCheck();//マスク処理呼び出し
 
-            groupCheckBoxAllClear();
+            
 
-            int index = dgvPersons.CurrentRow.Index;
-            foreach (var group in listPerson[index].listGroup) {
+        }
+        //更新・削除ボタンのマスク処理を行う(マスク判定を含む)
+        private void EnabledCheck() {            
 
-                switch (group) {
-                    case Person.GroupType.家族:
-                        cbFamily.Checked = true;
-                        break;
-                    case Person.GroupType.友人:
-                        cbFriend.Checked = true;
-                        break;
-                    case Person.GroupType.仕事:
-                        cbWork.Checked = true;
-                        break;
-                    case Person.GroupType.その他:
-                        cbOther.Checked = true;
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            if (listPerson.Count() == 0) {
-
-                btUpdate.Enabled = false;
-                btDeletion.Enabled = false;
-
-
-            }
+            btUpdate.Enabled = btDeletion.Enabled = listPerson.Count() > 0 ? true : false;
 
         }
 
@@ -290,6 +252,7 @@ namespace AddressBook {
                         listPerson = (BindingList<Person>)bf.Deserialize(fs);
                         dgvPersons.DataSource = null;
                         dgvPersons.DataSource = listPerson;
+
                     }
 
                 }
@@ -299,12 +262,7 @@ namespace AddressBook {
 
                 }
 
-                if (listPerson.Count >= 0) {
-
-                    btUpdate.Enabled = true;
-                    btDeletion.Enabled = true;
-
-                }
+                EnabledCheck();
 
                 foreach (var item in listPerson.Select(p => p.Company)) {
 
@@ -314,6 +272,12 @@ namespace AddressBook {
                 }
 
             }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
+            EnabledCheck();
 
         }
     }
