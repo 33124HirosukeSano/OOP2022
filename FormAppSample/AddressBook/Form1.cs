@@ -44,6 +44,7 @@ namespace AddressBook {
                 Address = tbAddress.Text,
                 Company = cbCompany.Text,
                 Picture = pbPicture.Image,
+                KindNumber = GetRadioButtonKind(),
                 Registration = dtpRegistDate.Value,
                 listGroup = GetCheckBoxGroup(),
                 TellNumber = tbTellNumber.Text,
@@ -111,7 +112,26 @@ namespace AddressBook {
 
             return listGroup;
 
-        }        
+        }
+
+        //ラジオボタンにセットされている値を取り出す
+        private Person.KindNmberType GetRadioButtonKind() {
+
+            Person.KindNmberType selectedKindNumber = Person.KindNmberType.その他;
+
+            if (rbHome.Checked) {//自宅にチェック
+
+                selectedKindNumber = Person.KindNmberType.自宅;
+
+            }
+            if (rbMobile.Checked) {//携帯にチェック
+
+                selectedKindNumber = Person.KindNmberType.携帯;
+
+            }
+            return selectedKindNumber;
+
+        }
 
         private void btPictureClear_Click(object sender, EventArgs e) {
 
@@ -147,6 +167,26 @@ namespace AddressBook {
 
             groupCheckBoxAllClear();
 
+            setGroupType(index);//グループチェック            
+            setKindNumberType(index);//番号チェック処理
+        }
+
+        private void setKindNumberType(int index) {
+            switch (listPerson[index].KindNumber) {
+                case Person.KindNmberType.自宅:
+                    rbHome.Checked = true;
+                    break;
+                case Person.KindNmberType.携帯:
+                    rbMobile.Checked = true;
+                    break;
+                case Person.KindNmberType.その他:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void setGroupType(int index) {
             foreach (var group in listPerson[index].listGroup) {
 
                 switch (group) {
@@ -167,7 +207,7 @@ namespace AddressBook {
                         break;
 
                 }
-            }            
+            }
         }
 
         private void groupCheckBoxAllClear() {
@@ -184,30 +224,26 @@ namespace AddressBook {
             listPerson[dgvPersons.CurrentRow.Index].Address = tbAddress.Text;
             listPerson[dgvPersons.CurrentRow.Index].Company = cbCompany.Text;
             listPerson[dgvPersons.CurrentRow.Index].listGroup = GetCheckBoxGroup();
+            listPerson[dgvPersons.CurrentRow.Index].KindNumber = GetRadioButtonKind();
             listPerson[dgvPersons.CurrentRow.Index].TellNumber = tbTellNumber.Text;
             listPerson[dgvPersons.CurrentRow.Index].Registration = dtpRegistDate.Value;
-            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;            
+            listPerson[dgvPersons.CurrentRow.Index].Picture = pbPicture.Image;
 
             dgvPersons.Refresh();
             
         }
 
         private void btDeletion_Click(object sender, EventArgs e) {
-
             
             listPerson.RemoveAt(dgvPersons.CurrentRow.Index);
-
+           
+            EnabledCheck();//マスク処理呼び出し
             
-
-                EnabledCheck();//マスク処理呼び出し
-
-            
-
         }
         //更新・削除ボタンのマスク処理を行う(マスク判定を含む)
-        private void EnabledCheck() {            
+        private void EnabledCheck() {
 
-            btUpdate.Enabled = btDeletion.Enabled = listPerson.Count() > 0 ? true : false;
+            btUpdate.Enabled = btDeletion.Enabled = btSave.Enabled = listPerson.Count() > 0 ? true : false;
 
         }
 
@@ -226,16 +262,13 @@ namespace AddressBook {
                         bf.Serialize(fs, listPerson);
 
                     }
-
                 }
                 catch (Exception ex) {
 
                     MessageBox.Show(ex.Message);
                     
                 }
-
             }
-
         }
 
         private void btOpen_Click(object sender, EventArgs e) {
@@ -255,7 +288,6 @@ namespace AddressBook {
                         dgvPersons.DataSource = listPerson;
 
                     }
-
                 }
                 catch (Exception ex) {
 
@@ -268,7 +300,6 @@ namespace AddressBook {
                 EnabledCheck();
 
                 foreach (var item in listPerson.Select(p => p.Company)) {
-
 
                     //すでに存在する会社を登録
                     setCbCompany(item);
@@ -283,16 +314,10 @@ namespace AddressBook {
 
             EnabledCheck();
             
-
         }
+
 
         private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-            //dgvPersons.CellDoubleClick
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
 
         }
     }

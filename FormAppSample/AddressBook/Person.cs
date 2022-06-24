@@ -51,6 +51,7 @@ namespace AddressBook {
 
             自宅,
             携帯,
+            その他,
 
         }
     }
