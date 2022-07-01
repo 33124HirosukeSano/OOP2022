@@ -13,7 +13,7 @@ using System.Net;
 namespace RssReader {
     public partial class Form1 : Form {
 
-        IEnumerable<string> xTitle;
+        IEnumerable<string> xTitle, xLink;
 
         public Form1() {
             InitializeComponent();
@@ -27,21 +27,58 @@ namespace RssReader {
 
                 var xdoc = XDocument.Load(stream);
                 xTitle = xdoc.Root.Descendants("item").Select(x => (String)x.Element("title"));
-                var lNew = xdoc.Root.Descendants("item").Select(x => (String)x.Element("link"));
-                List<string> linklist = new List<string>();
+                                
+                foreach (var data in xTitle) {
 
-                foreach (var data in lNew) {
-
-                    linklist.Add(data);
+                    lbRssTitle.Items.Add(data);
 
                 }
+
+                xLink = xdoc.Root.Descendants("item").Select(x => (String)x.Element("link"));
+
             }
         }
 
-        private void lbRssTitle_Click(object sender, EventArgs e) {            
-            
-            int index = lbRssTitle.SelectedIndex;
+        private void btback_Click(object sender, EventArgs e) {
+
+            wvBrowser.GoBack();
 
         }
+
+        private void btForward_Click(object sender, EventArgs e) {
+
+            wvBrowser.GoForward();
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
+            EnabledCheck();
+
+        }
+
+        private void EnabledCheck() {
+
+            btBack.Enabled = wvBrowser.CanGoBack;
+            btForward.Enabled = wvBrowser.CanGoForward;
+        }        
+        private void wvBrowser_NavigationCompleted(object sender, Microsoft.Toolkit.Win32.UI.Controls.Interop.WinRT.WebViewControlNavigationCompletedEventArgs e) {
+
+            EnabledCheck();
+
+        }
+
+        private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
+
+            
+            int index = lbRssTitle.SelectedIndex;
+            var url = xLink.ElementAt(index);
+            //wbBrowser.Navigate(url);
+            //wbBrowser.Url = new Uri(url);
+            wvBrowser.Source = new Uri(url);
+            
+
+        }
+        
     }
 }
