@@ -12,17 +12,18 @@ namespace XmlSample {
 
             using (var wc = new WebClient()) {
 
-                var stream = new WebClient().OpenRead("https://news.yahoo.co.jp/rss/media/tspkeiba/all.xml");
+                var stream = wc.OpenRead("https://news.yahoo.co.jp/rss/media/tspkeiba/all.xml");
 
                 var xdoc = XDocument.Load(stream);
                 var xNew = xdoc.Root.Descendants("item").Select(x => x.Element("title"));
+                
 
                 foreach (var data in xNew) {
 
                     Console.WriteLine(data);
 
                 }
-            }                        
+            } 
         }
     }
 }
