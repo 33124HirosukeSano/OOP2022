@@ -72,6 +72,8 @@ namespace RssReader {
 
             
             int index = lbRssTitle.SelectedIndex;
+
+            if (index == -1) return;
             var url = xLink.ElementAt(index);
             //wbBrowser.Navigate(url);
             //wbBrowser.Url = new Uri(url);
