@@ -60,16 +60,36 @@ namespace Exercise1 {
                                 .Select(x => new {
                                     Name = (string)x.Element("name"),
                                     TeamMenbers = (string)x.Element("teammembers"),
-                                }).Max(x => (string)(x.TeamMenbers));
-
-            Console.WriteLine(sprots);
+                                }).OrderByDescending(x => (string)(x.TeamMenbers)).FirstOrDefault();
+           
+            Console.WriteLine(sprots.Name);            
 
         }
 
         private static void Exercise1_4(string file, string newfile) {
+
+            var xdoc = XDocument.Load(file);
+
+            var element = new XElement("ballsport",
+                            new XElement("name", "サッカー",new XAttribute("kanji","蹴球")),
+                            new XElement("teammembers","11"),
+                            new XElement("firstplayed","1863"));            
             
+            xdoc.Root.Add(element);
+            xdoc.Save(newfile);
 
+            var sprots = xdoc.Root.Elements()
+                               .Select(x => new {
+                                   Name = (string)x.Element("name"),
+                                   TeamMenbers = (string)x.Element("teammembers"),
+                                   FirstPlayed = (string)x.Element("firstplayed"),
+                               });
 
+            foreach (var sport in sprots) {
+
+                Console.WriteLine("{0} {1} {2}", sport.Name, sport.TeamMenbers, sport.FirstPlayed);
+
+            }            
         }
     }
 }
