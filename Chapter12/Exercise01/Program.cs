@@ -158,7 +158,6 @@ namespace Exercise01 {
                 });
                 serializer.WriteObject(employees, emps);
             }
-
         }
     }
 }
