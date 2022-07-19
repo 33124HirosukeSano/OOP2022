@@ -192,6 +192,7 @@ namespace AddressBook {
             this.pbPicture.Location = new System.Drawing.Point(701, 25);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(156, 150);
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPicture.TabIndex = 4;
             this.pbPicture.TabStop = false;
             // 
@@ -218,7 +219,6 @@ namespace AddressBook {
             this.dgvPersons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersons.Size = new System.Drawing.Size(797, 162);
             this.dgvPersons.TabIndex = 6;
-            this.dgvPersons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersons_CellContentClick);
             this.dgvPersons.Click += new System.EventHandler(this.dgvPersons_Click);
             // 
             // btPictureClear
@@ -394,6 +394,7 @@ namespace AddressBook {
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "住所録ソフト";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersons)).EndInit();
             this.gbKindNumber.ResumeLayout(false);

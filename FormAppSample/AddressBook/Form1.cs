@@ -308,17 +308,16 @@ namespace AddressBook {
 
             }
 
+        }        
+
+        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
         }
 
         private void Form1_Load(object sender, EventArgs e) {
 
             EnabledCheck();
-            
         }
 
-
-        private void dgvPersons_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
     }
 }
