@@ -279,12 +279,19 @@ namespace CarReportSystem {
             //マスク処理
             EnabledCheck();
 
+            ColorDialog cd = new ColorDialog();
+            cd.Color = this.BackColor;
+            this.BackColor = cd.Color;
+            SetColor.MainFormColor = cd.Color.ToArgb();
+
             //設定ファイルを逆シリアル化
             using (var reader = XmlReader.Create("setting.xml")) {
                 var serializer = new XmlSerializer(typeof(Settings));
                 var settinng = serializer.Deserialize(reader) as Settings;
-                
+                this.BackColor = Color.FromArgb(settinng.MainFormColor);//ARGBからColorオブジェクトへ
+
             }
+
 
 
         }
@@ -292,6 +299,7 @@ namespace CarReportSystem {
         private void btExit_Click(object sender, EventArgs e) {
 
             this.Close();
+
 
         }
 
@@ -306,17 +314,16 @@ namespace CarReportSystem {
             cd.SolidColorOnly = false;
             //[作成した色]に指定した色（RGB値）を表示する
             cd.CustomColors = new int[] {
-                0x33, 0x66, 0x99, 0xCC, 0x3300, 0x3333,
-                0x3366, 0x3399, 0x33CC, 0x6600, 0x6633,
-                0x6666, 0x6699, 0x66CC, 0x9900, 0x9933
+                
             };
             
             if (cd.ShowDialog() == DialogResult.OK) {
 
                 this.BackColor = cd.Color;
-                SetColor.MainFormColor = cd.Color;
+                SetColor.MainFormColor = cd.Color.ToArgb();
 
-            }
+            }            
+
         }
 
         private void btChangeDisplaySettings_Click(object sender, EventArgs e) {
@@ -335,7 +342,8 @@ namespace CarReportSystem {
                 var serializer = new XmlSerializer(SetColor.GetType());
                 serializer.Serialize(color, SetColor);
 
-            }
+            }            
+
         }
     }
 }

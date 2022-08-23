@@ -12,7 +12,7 @@ namespace CarReportSystem {
     [Serializable]
     public class Settings {
         
-        public Color MainFormColor { get; set; } 
+        public int MainFormColor { get; set; } 
 
     }
 }
