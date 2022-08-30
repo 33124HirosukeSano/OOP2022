@@ -14,12 +14,13 @@ using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
-
+        
         BindingList<CarReport> listCarReport = new BindingList<CarReport>();
-        Settings SetColor = new Settings();
+        Settings SetColor = Settings.getInstance();
         OpenFileDialog ofdFileOpenDialog = new OpenFileDialog();
         SaveFileDialog sfdSaveDialog = new SaveFileDialog();
-        int mode = 0;        
+        int mode = 0;
+        ColorDialog cd = new ColorDialog();
 
         public Form1() {
             InitializeComponent();
@@ -275,24 +276,24 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-
-            //マスク処理
-            EnabledCheck();
-
-            ColorDialog cd = new ColorDialog();
-            cd.Color = this.BackColor;
-            this.BackColor = cd.Color;
-            SetColor.MainFormColor = cd.Color.ToArgb();
-
+            
+            try {
             //設定ファイルを逆シリアル化
-            using (var reader = XmlReader.Create("setting.xml")) {
-                var serializer = new XmlSerializer(typeof(Settings));
-                var settinng = serializer.Deserialize(reader) as Settings;
-                this.BackColor = Color.FromArgb(settinng.MainFormColor);//ARGBからColorオブジェクトへ
+                using (var reader = XmlReader.Create("setting.xml")) {
+                    var serializer = new XmlSerializer(typeof(Settings));
+                    var settinng = serializer.Deserialize(reader) as Settings;
+                    BackColor = Color.FromArgb(settinng.MainFormColor);//ARGBからColorオブジェクトへ
+
+                }
+            }
+            catch (Exception) {
 
             }
+            finally {
 
+                EnabledCheck();
 
+            }
 
         }
 
@@ -300,14 +301,10 @@ namespace CarReportSystem {
 
             this.Close();
 
-
         }
 
         private void 設定ToolStripMenuItem_Click(object sender, EventArgs e) {
-
-            
-            ColorDialog cd = new ColorDialog();
-            
+                                    
             cd.Color = this.BackColor;
             
             cd.AllowFullOpen = true;
@@ -320,9 +317,8 @@ namespace CarReportSystem {
             if (cd.ShowDialog() == DialogResult.OK) {
 
                 this.BackColor = cd.Color;
-                SetColor.MainFormColor = cd.Color.ToArgb();
 
-            }            
+            }
 
         }
 
@@ -331,19 +327,19 @@ namespace CarReportSystem {
             pbCarPicture.SizeMode = (PictureBoxSizeMode)mode;
             mode = mode < 4 ? ++mode : 0;
 
-
         }
 
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+            
+            cd.Color = this.BackColor;
+            SetColor.MainFormColor = cd.Color.ToArgb();
 
             //設定ファイルをシリアル化
             using (var color = XmlWriter.Create("setting.xml")) {
                 var serializer = new XmlSerializer(SetColor.GetType());
                 serializer.Serialize(color, SetColor);
 
-            }            
-
+            }
         }
     }
 }
