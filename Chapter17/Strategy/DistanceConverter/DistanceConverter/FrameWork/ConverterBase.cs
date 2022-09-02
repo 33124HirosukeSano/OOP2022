@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DistanceConverter {
+namespace DistanceConverter.FrameWork {
     public abstract class ConverterBase {
 
         public abstract bool IsMyUnit(string name);
@@ -28,6 +28,5 @@ namespace DistanceConverter {
             return feet * Ratio;
 
         }
-
     }
 }
