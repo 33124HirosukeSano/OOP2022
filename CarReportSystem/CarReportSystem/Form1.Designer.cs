@@ -372,28 +372,28 @@ namespace CarReportSystem {
             // 開くToolStripMenuItem
             // 
             this.開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            this.開くToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.開くToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.開くToolStripMenuItem.Text = "開く(O)...";
             this.開くToolStripMenuItem.Click += new System.EventHandler(this.btOpenArticle_Click);
             // 
             // 保存ToolStripMenuItem
             // 
             this.保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.保存ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.保存ToolStripMenuItem.Text = "保存(S)...";
             this.保存ToolStripMenuItem.Click += new System.EventHandler(this.btSaveArticle_Click);
             // 
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.設定ToolStripMenuItem.Text = "色設定...";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.終了ToolStripMenuItem.Text = "終了(X)";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.btExit_Click);
             // 
