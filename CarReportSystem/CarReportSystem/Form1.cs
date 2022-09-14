@@ -48,18 +48,16 @@ namespace CarReportSystem {
             //データベース更新
             this.carReportDBTableAdapter.Update(this.infosys202230DataSet.CarReportDB);
 
-            EnabledCheck();
+            /*EnabledCheck();*/
 
             if (String.IsNullOrWhiteSpace(tbReport.Text)) {
 
                 MessageBox.Show("空欄があります。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
 
-
             } else {
-
                 
-                EnabledCheck();
+                /*EnabledCheck();*/
 
             }
 
@@ -157,30 +155,30 @@ namespace CarReportSystem {
                     break;
             }
         }
+        
+            //データが更新された時の処理
+            /*private void btCorrectReport_Click(object sender, EventArgs e) {
 
-        //データが更新された時の処理
-        private void btCorrectReport_Click(object sender, EventArgs e) {
+                listCarReport[dgvCar.CurrentRow.Index].Date = dtpDate.Value;
+                listCarReport[dgvCar.CurrentRow.Index].Auther = cbAuther.Text;
+                listCarReport[dgvCar.CurrentRow.Index].Maker = GetRadioButtonKind();
+                listCarReport[dgvCar.CurrentRow.Index].CarName = cbCarName.Textかい;
+                listCarReport[dgvCar.CurrentRow.Index].Report = tbReport.Text;
+                listCarReport[dgvCar.CurrentRow.Index].Picture = pbCarPicture.Image;
 
-            listCarReport[dgvCar.CurrentRow.Index].Date = dtpDate.Value;
-            listCarReport[dgvCar.CurrentRow.Index].Auther = cbAuther.Text;
-            listCarReport[dgvCar.CurrentRow.Index].Maker = GetRadioButtonKind();
-            listCarReport[dgvCar.CurrentRow.Index].CarName = cbCarName.Text;
-            listCarReport[dgvCar.CurrentRow.Index].Report = tbReport.Text;
-            listCarReport[dgvCar.CurrentRow.Index].Picture = pbCarPicture.Image;
+                dgvCar.Refresh();
 
-            dgvCar.Refresh();
+                setCbAuther(cbAuther.Text);
+                setCarName(cbCarName.Text);
 
-            setCbAuther(cbAuther.Text);
-            setCarName(cbCarName.Text);
+            }*/
 
-        }
-
-        private void btDeletionReport_Click(object sender, EventArgs e) {
+            private void btDeletionReport_Click(object sender, EventArgs e) {
 
             listCarReport.RemoveAt(dgvCar.CurrentRow.Index);
 
             //マスク処理呼び出し
-            EnabledCheck();
+            /*EnabledCheck();*/
 
         }
 
@@ -259,8 +257,8 @@ namespace CarReportSystem {
         //}
 
         private void Form1_Load(object sender, EventArgs e) {
-            // TODO: このコード行はデータを 'infosys202230DataSet.CarReportDB' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
             
+            pbCarPicture.SizeMode = PictureBoxSizeMode.StretchImage;
 
             try {
             //設定ファイルを逆シリアル化
@@ -276,7 +274,7 @@ namespace CarReportSystem {
             }
             finally {
 
-                EnabledCheck();
+                /*EnabledCheck();*/
 
             }
 
@@ -343,7 +341,7 @@ namespace CarReportSystem {
 
         private void carReportDBDataGridView_Click(object sender, EventArgs e) {
 
-            if (carReportDBDataGridView.RowCount == null) {
+            if (carReportDBDataGridView.RowCount == -1) {
 
                 return;
 
@@ -362,7 +360,9 @@ namespace CarReportSystem {
                 pbCarPicture.Image = null;
 
             }
-            
+
+            //setMakerGroup(index);
+
         }
 
         // バイト配列をImageオブジェクトに変換
@@ -391,6 +391,10 @@ namespace CarReportSystem {
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202230DataSet);
+
+        }
+
+        private void carReportDBDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
 
         }
     }

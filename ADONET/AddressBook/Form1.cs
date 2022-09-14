@@ -48,7 +48,7 @@ namespace AddressBook {
         
         private void addressTableDataGridView_Click(object sender, EventArgs e) {
 
-            if (addressTableDataGridView.RowCount == null) {
+            if (addressTableDataGridView.RowCount == -1) {
 
                 return;
 

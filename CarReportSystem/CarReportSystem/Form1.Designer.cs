@@ -294,7 +294,6 @@ namespace CarReportSystem {
             this.btCorrectReport.TabIndex = 8;
             this.btCorrectReport.Text = "修正";
             this.btCorrectReport.UseVisualStyleBackColor = true;
-            this.btCorrectReport.Click += new System.EventHandler(this.btCorrectReport_Click);
             // 
             // btDeletionReport
             // 
@@ -320,7 +319,6 @@ namespace CarReportSystem {
             // 
             // btPictureClear
             // 
-            this.btPictureClear.Enabled = false;
             this.btPictureClear.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btPictureClear.Location = new System.Drawing.Point(827, 83);
             this.btPictureClear.Name = "btPictureClear";
@@ -453,6 +451,7 @@ namespace CarReportSystem {
             this.carReportDBDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.carReportDBDataGridView.Size = new System.Drawing.Size(742, 210);
             this.carReportDBDataGridView.TabIndex = 30;
+            this.carReportDBDataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.carReportDBDataGridView_DataError);
             this.carReportDBDataGridView.Click += new System.EventHandler(this.carReportDBDataGridView_Click);
             // 
             // dataGridViewTextBoxColumn1
