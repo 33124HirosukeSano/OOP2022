@@ -348,7 +348,8 @@ namespace CarReportSystem {
                 return;
 
             }
-            
+
+            int index = carReportDBDataGridView.CurrentRow.Index;
             cbAuther.Text = carReportDBDataGridView.CurrentRow.Cells[2].Value.ToString();
             cbCarName.Text = carReportDBDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbReport.Text = carReportDBDataGridView.CurrentRow.Cells[5].Value.ToString();
@@ -361,7 +362,7 @@ namespace CarReportSystem {
                 pbCarPicture.Image = null;
 
             }
-
+            
         }
 
         // バイト配列をImageオブジェクトに変換
