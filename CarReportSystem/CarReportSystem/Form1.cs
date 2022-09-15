@@ -150,6 +150,7 @@ namespace CarReportSystem {
                     rbForeignCar.Checked = true;
                     break;
                 case "その他":
+                    rbOther.Checked = true;
                     break;
                 default:
                     break;
@@ -347,7 +348,7 @@ namespace CarReportSystem {
 
             }
 
-            int index = carReportDBDataGridView.CurrentRow.Index;
+            string maker = carReportDBDataGridView.CurrentRow.Cells[3].Value.ToString();
             cbAuther.Text = carReportDBDataGridView.CurrentRow.Cells[2].Value.ToString();
             cbCarName.Text = carReportDBDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbReport.Text = carReportDBDataGridView.CurrentRow.Cells[5].Value.ToString();
@@ -361,7 +362,7 @@ namespace CarReportSystem {
 
             }
 
-            //setMakerGroup(index);
+            setMakerGroup(maker);
 
         }
 
