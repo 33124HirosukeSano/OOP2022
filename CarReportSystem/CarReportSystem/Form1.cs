@@ -40,13 +40,10 @@ namespace CarReportSystem {
 
         private void btAddReport_Click(object sender, EventArgs e) {
 
-            DataRow newRow = infosys202230DataSet.AddressTable.NewRow();
+            DataRow newRow = infosys202230DataSet.CarReportDB.NewRow();
             newRow[2] = cbAuther.Text;
             newRow[4] = cbCarName.Text;
-            //データセットへ新しいレコードを追加
-            infosys202230DataSet.AddressTable.Rows.Add(newRow);
-            //データベース更新
-            this.carReportDBTableAdapter.Update(this.infosys202230DataSet.CarReportDB);
+            
 
             /*EnabledCheck();*/
 
@@ -56,8 +53,12 @@ namespace CarReportSystem {
                 return;
 
             } else {
-                
+
                 /*EnabledCheck();*/
+                //データセットへ新しいレコードを追加
+                infosys202230DataSet.AddressTable.Rows.Add(newRow);
+                //データベース更新
+                this.carReportDBTableAdapter.Update(this.infosys202230DataSet.CarReportDB);
 
             }
 
@@ -86,36 +87,34 @@ namespace CarReportSystem {
         }
 
         //ラジオボタンにセットされている値を取り出す
-        private CarReport.MakerGroup GetRadioButtonKind() {
-
-            CarReport.MakerGroup selectedMaker = CarReport.MakerGroup.その他;
-
+        private string GetRadioButtonKind() {
+            
             if (rbTOYOTA.Checked) {//トヨタにチェック
 
-                selectedMaker = CarReport.MakerGroup.トヨタ;
+                return "トヨタ";
 
             }
             if (rbNISSAN.Checked) {//日産にチェック
 
-                selectedMaker = CarReport.MakerGroup.日産;
+                return "日産";
 
             }
             if (rbHONDA.Checked) {//ホンダにチェック
 
-                selectedMaker = CarReport.MakerGroup.ホンダ;
+                return "ホンダ";
 
             }
             if (rbSUBARU.Checked) {//スバルにチェック
 
-                selectedMaker = CarReport.MakerGroup.スバル;
+                return "スバル";
 
             }
             if (rbForeignCar.Checked) {//外国車にチェック
 
-                selectedMaker = CarReport.MakerGroup.外国車;
+                return "外国車";
 
             }
-            return selectedMaker;
+            return "その他";
 
         }
 
