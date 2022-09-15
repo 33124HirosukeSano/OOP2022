@@ -131,7 +131,11 @@ namespace AddressBook {
 
         private void btClear_Click(object sender, EventArgs e) {
 
-
+                        
+            //表面上のデータをクリア
+            infosys202230DataSet.AddressTable.Rows.Clear();
+            //データベース更新
+            this.addressTableTableAdapter.Update(this.infosys202230DataSet.AddressTable);            
 
         }
 

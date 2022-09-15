@@ -132,24 +132,24 @@ namespace CarReportSystem {
 
         }
 
-        private void setMakerGroup(int index) {
-            switch (listCarReport[index].Maker) {
-                case CarReport.MakerGroup.トヨタ:
+        private void setMakerGroup(string maker) {
+            switch (maker) {
+                case "トヨタ":
                     rbTOYOTA.Checked = true;
                     break;
-                case CarReport.MakerGroup.日産:
+                case "日産":
                     rbNISSAN.Checked = true;
                     break;
-                case CarReport.MakerGroup.ホンダ:
+                case "ホンダ":
                     rbHONDA.Checked = true;
                     break;
-                case CarReport.MakerGroup.スバル:
+                case "スバル":
                     rbSUBARU.Checked = true;
                     break;
-                case CarReport.MakerGroup.外国車:
+                case "外国車":
                     rbForeignCar.Checked = true;
                     break;
-                case CarReport.MakerGroup.その他:
+                case "その他":
                     break;
                 default:
                     break;
