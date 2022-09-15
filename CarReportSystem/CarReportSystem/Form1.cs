@@ -14,8 +14,7 @@ using System.Xml.Serialization;
 
 namespace CarReportSystem {
     public partial class Form1 : Form {
-        
-        BindingList<CarReport> listCarReport = new BindingList<CarReport>();
+                
         Settings SetColor = Settings.getInstance();
         OpenFileDialog ofdFileOpenDialog = new OpenFileDialog();
         SaveFileDialog sfdSaveDialog = new SaveFileDialog();
@@ -24,7 +23,7 @@ namespace CarReportSystem {
 
         public Form1() {
             InitializeComponent();
-            dgvCar.DataSource = listCarReport;
+            
         }
 
         private void btOpenPicture_Click(object sender, EventArgs e) {
@@ -41,9 +40,15 @@ namespace CarReportSystem {
         private void btAddReport_Click(object sender, EventArgs e) {
 
             DataRow newRow = infosys202230DataSet.CarReportDB.NewRow();
+
+           
+            newRow[1] = dtpDate.Value;
             newRow[2] = cbAuther.Text;
+            newRow[3] = GetRadioButtonKind();
             newRow[4] = cbCarName.Text;
-            
+            newRow[5] = tbReport.Text;
+            newRow[6] = ImageToByteArray(pbCarPicture.Image);
+
 
             /*EnabledCheck();*/
 
@@ -53,10 +58,10 @@ namespace CarReportSystem {
                 return;
 
             } else {
-
+                
                 /*EnabledCheck();*/
                 //データセットへ新しいレコードを追加
-                infosys202230DataSet.AddressTable.Rows.Add(newRow);
+                infosys202230DataSet.CarReportDB.Rows.Add(newRow);
                 //データベース更新
                 this.carReportDBTableAdapter.Update(this.infosys202230DataSet.CarReportDB);
 
@@ -121,15 +126,11 @@ namespace CarReportSystem {
         private void btPictureClear_Click(object sender, EventArgs e) {
 
             pbCarPicture.Image = null;
-            btPictureClear.Enabled = false;
+            //btPictureClear.Enabled = false;
             btChangeDisplaySettings.Enabled = false;
 
         }
-
-        //データグリットビューをクリックした時のイベントハンドラ
-        private void dgvCar_Click(object sender, EventArgs e) {
-
-        }
+        
 
         private void setMakerGroup(string maker) {
             switch (maker) {
@@ -155,27 +156,11 @@ namespace CarReportSystem {
                     break;
             }
         }
-        
-            //データが更新された時の処理
-            /*private void btCorrectReport_Click(object sender, EventArgs e) {
+                    
 
-                listCarReport[dgvCar.CurrentRow.Index].Date = dtpDate.Value;
-                listCarReport[dgvCar.CurrentRow.Index].Auther = cbAuther.Text;
-                listCarReport[dgvCar.CurrentRow.Index].Maker = GetRadioButtonKind();
-                listCarReport[dgvCar.CurrentRow.Index].CarName = cbCarName.Textかい;
-                listCarReport[dgvCar.CurrentRow.Index].Report = tbReport.Text;
-                listCarReport[dgvCar.CurrentRow.Index].Picture = pbCarPicture.Image;
+        private void btDeletionReport_Click(object sender, EventArgs e) {
 
-                dgvCar.Refresh();
-
-                setCbAuther(cbAuther.Text);
-                setCarName(cbCarName.Text);
-
-            }*/
-
-            private void btDeletionReport_Click(object sender, EventArgs e) {
-
-            listCarReport.RemoveAt(dgvCar.CurrentRow.Index);
+            /*listCarReport.RemoveAt(dgvCar.CurrentRow.Index);
 
             //マスク処理呼び出し
             /*EnabledCheck();*/
@@ -185,76 +170,12 @@ namespace CarReportSystem {
         //更新・削除ボタンのマスク処理を行う(マスク判定を含む)
         private void EnabledCheck() {
 
-            btCorrectReport.Enabled = btDeletionReport.Enabled = btSaveArticle.Enabled = btUpdate.Enabled = listCarReport.Count() > 0 ? true : false;
+            //btCorrectReport.Enabled = btDeletionReport.Enabled = btSaveArticle.Enabled = btUpdate.Enabled = listCarReport.Count() > 0 ? true : false;
 
         }
 
-        private void btSaveArticle_Click(object sender, EventArgs e) {
-
-            if (sfdSaveDialog.ShowDialog() == DialogResult.OK) {
-
-                try {
-
-                    //バイナリ形式でシリアル化
-                    var bf = new BinaryFormatter();
-
-                    using (FileStream fs = File.Open(sfdSaveDialog.FileName, FileMode.Create)) {
-
-                        bf.Serialize(fs, listCarReport);
-
-                    }
-                }
-                catch (Exception ex) {
-
-                    MessageBox.Show(ex.Message);
-
-                }
-            }
-        }
-
-        //private void btOpenArticle_Click(object sender, EventArgs e) {
-
-        //    if (ofdFileOpenDialog.ShowDialog() == DialogResult.OK) {
-
-        //        try {
-
-        //            //バイナリ形式で逆シリアル化
-        //            var bf = new BinaryFormatter();
-
-        //            using (FileStream fs = File.Open(ofdFileOpenDialog.FileName, FileMode.Open, FileAccess.Read)) {
-
-        //                //逆シリアル化して読み込む
-        //                listCarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-        //                dgvCar.DataSource = null;
-        //                dgvCar.DataSource = listCarReport;
-
-        //            }
-        //        }
-        //        catch (Exception ex) {
-
-        //            MessageBox.Show(ex.Message);
-
-        //        }
-
-        //        cbAuther.Items.Clear();
-        //        cbCarName.Items.Clear();
-
-        //        EnabledCheck();
-
-        //        foreach (var item in listCarReport.Select(p => p.Auther)) {
-
-        //            //すでに存在する記録者を登録
-        //            setCbAuther(item);
-
-        //        }
-        //        foreach (var item in listCarReport.Select(p => p.CarName)) {
-
-        //            //すでに存在する車名を登録
-        //            setCarName(item);
-
-        //        }
-        //    }
-        //}
+        
+        
 
         private void Form1_Load(object sender, EventArgs e) {
             
@@ -395,6 +316,19 @@ namespace CarReportSystem {
         }
 
         private void carReportDBDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+
+        }
+
+        private void btNameSearcher_Click(object sender, EventArgs e) {
+
+            this.carReportDBTableAdapter.FillByCarName(this.infosys202230DataSet.CarReportDB, tbCarSearcher.Text);
+
+        }
+
+        private void btSearchClear_Click(object sender, EventArgs e) {
+
+            tbCarSearcher.Text = null;
+            this.carReportDBTableAdapter.Fill(this.infosys202230DataSet.CarReportDB);
 
         }
     }
