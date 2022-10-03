@@ -12,12 +12,26 @@ namespace SampleEntityFramework {
             //AddAuthors();
             //AddBooks();
             //InsertBooks();
-            var books = GetBooks();
+            //var books = GetOldThreeBooks();
+            
+            using (var db = new BooksDbContext()) {
 
-            foreach (var book in books) {
+                var authors = db.Authors.OrderByDescending(b => b.Birthday).ToList();
 
-                Console.WriteLine($"{book.Title}{book.PublishedYear}");
+                foreach (var author in authors) {
 
+                    Console.WriteLine("{0} {1:yyyy/MM/dd}",
+                            author.Name, author.Birthday);
+                    foreach (var book in author.Books) {
+
+                        Console.WriteLine("{0} {1}",
+                                book.PublishedYear, book.Author.Name, book.Author.Birthday);
+
+                    }
+
+                    Console.WriteLine();
+
+                }
             }
         }
 
@@ -55,7 +69,7 @@ namespace SampleEntityFramework {
 
             using (var db = new BooksDbContext()) {
 
-                return db.Books.ToList();
+                return db.Books.Include(nameof(Author)).ToList();
 
             }
         }
@@ -122,6 +136,33 @@ namespace SampleEntityFramework {
                 };
                 db.Books.Add(book4);
                 db.SaveChanges();
+            }
+        }
+
+        static IEnumerable<Book> GetLongTitleBooks() {
+
+            using (var db = new BooksDbContext()) {
+
+                return db.Books.Include(nameof(Author)).Where(a => a.Title.Length == db.Books.Max(x => x.Title.Length)).ToList();
+
+            }
+        }
+
+        static IEnumerable<Book> GetOldThreeBooks() {
+
+            using (var db = new BooksDbContext()) {
+
+                return db.Books.Include(nameof(Author)).OrderBy(a => a.PublishedYear).ToList().Take(3);
+
+            }
+        }
+
+        static IEnumerable<Author> GetBooksOfAuthor() {
+
+            using (var db = new BooksDbContext()) {
+
+                return db.Authors.OrderByDescending(a => a.Birthday).ToList();
+
             }
         }
     }
