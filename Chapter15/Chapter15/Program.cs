@@ -8,18 +8,27 @@ namespace Chapter15 {
     class Program {
         static void Main(string[] args) {
 
-            var query = Library.Books
-                               .OrderBy(b => b.CategoryId)
-                               .ThenByDescending(b => b.PublishedYear);
-
-
-            foreach (var n in query) {
-
-                Console.WriteLine(n);
-
-            }
             
 
+            Console.WriteLine("出力したい西暦を入力(終了-1)");
+            int s =  int.Parse(Console.ReadLine());
+
+            if (s == -1) {
+                var years = new int[] { s };
+                var books = Library.Books
+                                   .Where(b => years.Contains(b.PublishedYear));
+
+                foreach (var book in books) {
+
+                    Console.WriteLine(book);
+
+                }
+
+            } else {
+
+
+
+            }            
         }
     }
 }
