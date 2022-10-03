@@ -160,7 +160,11 @@ namespace CarReportSystem {
 
         private void btDeletionReport_Click(object sender, EventArgs e) {
 
-            /*listCarReport.RemoveAt(dgvCar.CurrentRow.Index);
+            foreach (DataGridViewRow r in carReportDBDataGridView.SelectedRows) {
+                if (!r.IsNewRow) {
+                    carReportDBDataGridView.Rows.Remove(r);
+                }
+            }
 
             //マスク処理呼び出し
             /*EnabledCheck();*/
