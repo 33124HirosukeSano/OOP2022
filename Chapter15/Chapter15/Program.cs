@@ -40,9 +40,7 @@ namespace Chapter15 {
                                .OrderByDescending(b => b.PublishedYear);
 
             }
-            
-            
-
+                        
             foreach (var book in books) {
 
                 Console.WriteLine(book);
@@ -54,10 +52,44 @@ namespace Chapter15 {
                 .Where(b => years.Contains(b.PublishedYear))
                 .GroupBy(b => b.PublishedYear)
                 .OrderBy(g => g.Key);
-            foreach (var g in groups) {
+            /*foreach (var g in groups) {
+                Console.WriteLine($"{g.Key}年");
+                foreach (var book in g) {
+
+                    var category = Library.Categories.Where(b => b.Id == book.CategoryId)
+                                                     .First();
+
+                    Console.WriteLine($" タイトル:{book.Title},価格:{book.Price},カテゴリ:{category.Name}");
+
+                }
+            }*/
+
+            Console.WriteLine("--------------------------------------------------------------------");
+
+            var selected = Library.Books
+                .Where(b => years.Contains(b.PublishedYear))
+                .OrderByDescending(b => b.PublishedYear)
+                .OrderBy(b => b.CategoryId)
+                .ThenBy(b => b.PublishedYear)
+                .Join(Library.Categories,           //結合する2番目のシーケンス
+                      book => book.CategoryId,      //対象シーケンスの結合キー
+                      category => category.Id,      //2番目のシーケンスの結合キー
+                      (book, category) => new {
+                          Title = book.Title,
+                          Category = category.Name,
+                          PublishedYear = book.PublishedYear
+
+                      }
+                );
+
+            foreach (var book in selected) {
+
+                Console.WriteLine($"{book.PublishedYear}年");
+                //var category = Library.Categories.Where(b => b.Id == book.CategoryId)
+                //                                 .First();
+                Console.WriteLine($" タイトル:{book.Title},出版年:{book.PublishedYear},カテゴリ:{book.Category}");
 
             }
-
         }
     }
 }
