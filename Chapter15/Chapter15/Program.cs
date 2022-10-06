@@ -11,7 +11,6 @@ namespace Chapter15 {
             var years = new List<int>();
             int s;
             int sort;
-            int sump = 0;
 
             Console.WriteLine("出力したい西暦を入力(終了-1)");
             s =  int.Parse(Console.ReadLine());
@@ -52,7 +51,7 @@ namespace Chapter15 {
                 .Where(b => years.Contains(b.PublishedYear))
                 .GroupBy(b => b.PublishedYear)
                 .OrderBy(g => g.Key);
-            /*foreach (var g in groups) {
+            foreach (var g in groups) {
                 Console.WriteLine($"{g.Key}年");
                 foreach (var book in g) {
 
@@ -62,7 +61,7 @@ namespace Chapter15 {
                     Console.WriteLine($" タイトル:{book.Title},価格:{book.Price},カテゴリ:{category.Name}");
 
                 }
-            }*/
+            }
 
             Console.WriteLine("--------------------------------------------------------------------");
 
@@ -85,8 +84,7 @@ namespace Chapter15 {
                 //var category = Library.Categories.Where(b => b.Id == book.CategoryId)
                 //                                 .First();
                 Console.WriteLine($" タイトル:{book.Title},出版年:{book.PublishedYear},カテゴリ:{book.Category},{book.Price}");
-             
-                sump = sump + book.Price;
+            
 
             }
 
