@@ -277,8 +277,14 @@ namespace CarReportSystem {
             cbCarName.Text = carReportDBDataGridView.CurrentRow.Cells[4].Value.ToString();
             tbReport.Text = carReportDBDataGridView.CurrentRow.Cells[5].Value.ToString();
             if (!(carReportDBDataGridView.CurrentRow.Cells[6].Value is DBNull)) {
+                try {
+                    pbCarPicture.Image = ByteArrayToImage((byte[])carReportDBDataGridView.CurrentRow.Cells[6].Value);
+                }
+                catch (System.ArgumentException) {
 
-                pbCarPicture.Image = ByteArrayToImage((byte[])carReportDBDataGridView.CurrentRow.Cells[6].Value);
+                    pbCarPicture.Image = null;
+
+                }
 
             } else {
 
@@ -306,7 +312,7 @@ namespace CarReportSystem {
 
         private void btUpdate_Click(object sender, EventArgs e) {
 
-            //carReportDBDataGridView.CurrentRow.Cells[1].Value = tbName.Text;
+            carReportDBDataGridView.CurrentRow.Cells[1].Value = dtpDate.Text;
             carReportDBDataGridView.CurrentRow.Cells[2].Value = cbAuther.Text;
             carReportDBDataGridView.CurrentRow.Cells[3].Value = GetRadioButtonKind();
             carReportDBDataGridView.CurrentRow.Cells[4].Value = cbCarName.Text;
@@ -315,8 +321,8 @@ namespace CarReportSystem {
 
             this.Validate();
             this.carReportDBBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.infosys202230DataSet);
-
+            tableAdapterManager.UpdateAll(this.infosys202230DataSet);
+            //carReportDBTableAdapter.Update(this.infosys202230DataSet.CarReportDB);
         }
 
         private void carReportDBDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e) {

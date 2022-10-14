@@ -12,3 +12,4 @@ namespace CarReportSystem {
     partial class infosys202230DataSet {
     }
 }
+

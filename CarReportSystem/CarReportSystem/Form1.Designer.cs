@@ -346,14 +346,14 @@ namespace CarReportSystem {
             // 設定ToolStripMenuItem
             // 
             this.設定ToolStripMenuItem.Name = "設定ToolStripMenuItem";
-            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.設定ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.設定ToolStripMenuItem.Text = "色設定...";
             this.設定ToolStripMenuItem.Click += new System.EventHandler(this.設定ToolStripMenuItem_Click);
             // 
             // 終了ToolStripMenuItem
             // 
             this.終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.終了ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.終了ToolStripMenuItem.Text = "終了(X)";
             this.終了ToolStripMenuItem.Click += new System.EventHandler(this.btExit_Click);
             // 
@@ -499,11 +499,9 @@ namespace CarReportSystem {
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.AddressTableTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CarReportDBTableAdapter = this.carReportDBTableAdapter;
             this.tableAdapterManager.UpdateOrder = CarReportSystem.infosys202230DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.社員TableAdapter = null;
             // 
             // Form1
             // 
