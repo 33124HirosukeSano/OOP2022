@@ -20,6 +20,27 @@ namespace SampleApplication {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            var dt = DateTime.Now;
+            int season = dt.Month;
+            if (season == 3 || season == 4 || season == 5) {
+
+                seasonComboBox.SelectedIndex = 0;
+
+            } else if(season == 6 || season == 7 || season == 8) {
+
+                seasonComboBox.SelectedIndex = 1;
+
+            } else if (season == 9 || season == 10 || season == 11) {
+
+                seasonComboBox.SelectedIndex = 2;
+
+            } else if (season == 12 || season == 1 || season == 2) {
+
+                seasonComboBox.SelectedIndex = 3;
+
+            }
+                        
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {

@@ -64,7 +64,7 @@
         </Style>
     </Window.Resources>
     <DockPanel>
-            <Grid>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
