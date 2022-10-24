@@ -18,8 +18,16 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
+        public double Rpoint = 0;
+
         public MainWindow() {
             InitializeComponent();
+        }
+
+        private void RedSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+
+            
+
         }
     }
 }
