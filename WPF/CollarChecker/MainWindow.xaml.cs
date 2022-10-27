@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,18 +22,22 @@ namespace CollarChecker {
         
         public MainWindow() {
             InitializeComponent();
+
+            DataContext = GetColorList();
+
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
 
-            var doubleRpoint = Double.Parse(rPoint.Text);
-            var doubleGpoint = Double.Parse(gPoint.Text);
-            var doubleBpoint = Double.Parse(bPoint.Text);
-            
+            SetColor();
 
-            var nrPoint = byte.Parse(Math.Truncate(doubleRpoint).ToString());
-            var ngPoint = byte.Parse(Math.Truncate(doubleGpoint).ToString());
-            var nbPoint = byte.Parse(Math.Truncate(doubleBpoint).ToString());
+        }
+        
+        private void SetColor() {
+
+            var nrPoint = byte.Parse(rPoint.Text);
+            var ngPoint = byte.Parse(gPoint.Text);
+            var nbPoint = byte.Parse(bPoint.Text);
 
             SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(nrPoint, ngPoint, nbPoint));
 
@@ -40,29 +45,39 @@ namespace CollarChecker {
 
         }
 
-        private void Slider_ValueChanged(object sender, TextChangedEventArgs e) {
-
-            /*var doubleRpoint = Double.Parse(rPoint.Text);
-            var doubleGpoint = Double.Parse(gPoint.Text);
-            var doubleBpoint = Double.Parse(bPoint.Text);
-
-            var truncateRpoint = Math.Truncate(doubleRpoint).ToString();
-            var truncateGpoint = Math.Truncate(doubleGpoint).ToString();
-            var truncateBpoint = Math.Truncate(doubleBpoint).ToString();
-
-            var nrPoint = byte.Parse(truncateRpoint);
-            var ngPoint = byte.Parse(truncateGpoint);
-            var nbPoint = byte.Parse(truncateBpoint);
-
-            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(nrPoint, ngPoint, nbPoint));
-
-            cLabel.Background = brush;*/
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            
+
+            SetColor();
 
         }
+
+        private void Border_Loaded(object sender, RoutedEventArgs e) {
+
+
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
+
+            rSlider.Value = mycolor.Color.R;
+            gSlider.Value = mycolor.Color.G;
+            bSlider.Value = mycolor.Color.B;
+
+            SetColor();
+
+        }
+
+        private MyColor[] GetColorList() {
+            return typeof(Colors).GetProperties(BindingFlags.Public | BindingFlags.Static)
+                .Select(i => new MyColor() { Color = (Color)i.GetValue(null), Name = i.Name }).ToArray();
+        }
+
+        public class MyColor {
+            public Color Color { get; set; }
+            public string Name { get; set; }
+        }
+        
     }
 }

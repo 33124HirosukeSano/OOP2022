@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="500" Loaded="Window_Loaded">
+        Title="MainWindow" Height="300" Width="750" Loaded="Window_Loaded">
     <StackPanel>
         <Grid>
 
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -37,16 +38,50 @@
                 <TextBlock Grid.Column="0" Grid.Row="2" Width="45" Height="45" Text="G"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Width="45" Height="45" Text="B"/>
 
-                <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
-                <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
-                <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
+                <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Maximum="255" IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
+                <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Maximum="255" IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
+                <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Maximum="255" IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
 
-                <TextBox x:Name="rPoint" Grid.Column="5" Grid.Row="1" Width="45" Height="20" Text="{Binding ElementName=rSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="Slider_ValueChanged"/>
+                <TextBox x:Name="rPoint" Grid.Column="5" Grid.Row="1" Width="45" Height="20" Text="{Binding ElementName=rSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="gPoint" Grid.Column="5" Grid.Row="2" Width="45" Height="20" Text="{Binding ElementName=gSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="bPoint" Grid.Column="5" Grid.Row="3" Width="45" Height="20" Text="{Binding ElementName=bSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
 
+                <ComboBox x:Name="colorCombo" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="4" Grid.RowSpan="2" ItemsSource="{Binding}" SelectedValue="{Binding Color}" Margin="3,30,3,3" Height="24" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="155" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black" Loaded="Border_Loaded"  >
+                                    <Border.Background>
+                                        <SolidColorBrush Color="{Binding Color}"/>
+                                    </Border.Background>
+                                </Border>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
             </Grid>
 
+            <Grid Grid.Column="2" Grid.Row="0" Width="Auto" Height="Auto">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="stockButton" Width="200" Height="35">
+                    
+                    
+                </Button>
+
+                <ListBox Grid.Row="1" Width="244" Height="Auto">
+                    
+                    
+                </ListBox>
+
+            </Grid>
+            
             <Label x:Name="cLabel" Grid.Column="0" Grid.Row="0" Width="230" Height="230" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1,1,1,1"/>
 
         </Grid>
