@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollarChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="500">
+        Title="MainWindow" Height="300" Width="500" Loaded="Window_Loaded">
     <StackPanel>
         <Grid>
 
@@ -37,17 +37,17 @@
                 <TextBlock Grid.Column="0" Grid.Row="2" Width="45" Height="45" Text="G"/>
                 <TextBlock Grid.Column="0" Grid.Row="3" Width="45" Height="45" Text="B"/>
 
-                <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="RedSlider_ValueChanged"/>
-                <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="GreenSlider_ValueChanged"/>
-                <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="BlueSlider_ValueChanged"/>
+                <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
+                <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
+                <Slider x:Name="bSlider" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Maximum="255" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
 
-                <TextBox x:Name="rPoint" Grid.Column="5" Grid.Row="1" Width="45" Height="20" Text="{Binding ElementName=rSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="rPoint" Grid.Column="5" Grid.Row="1" Width="45" Height="20" Text="{Binding ElementName=rSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextChanged="Slider_ValueChanged"/>
                 <TextBox x:Name="gPoint" Grid.Column="5" Grid.Row="2" Width="45" Height="20" Text="{Binding ElementName=gSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="bPoint" Grid.Column="5" Grid.Row="3" Width="45" Height="20" Text="{Binding ElementName=bSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}"/>
 
             </Grid>
 
-            <Label x:Name="ColorLabel" Grid.Column="0" Grid.Row="0" Width="230" Height="230" VerticalAlignment="Center" Background="AliceBlue"/>
+            <Label x:Name="cLabel" Grid.Column="0" Grid.Row="0" Width="230" Height="230" VerticalAlignment="Center" BorderBrush="Black" BorderThickness="1,1,1,1"/>
 
         </Grid>
     </StackPanel>
