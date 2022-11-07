@@ -34,9 +34,9 @@
                     <RowDefinition Height="45"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Column="0" Grid.Row="1" Width="45" Height="45" Text="R"/>
-                <TextBlock Grid.Column="0" Grid.Row="2" Width="45" Height="45" Text="G"/>
-                <TextBlock Grid.Column="0" Grid.Row="3" Width="45" Height="45" Text="B"/>
+                <TextBlock Grid.Column="0" Grid.Row="1" Width="45" Height="45" Text="R" FontSize="20"/>
+                <TextBlock Grid.Column="0" Grid.Row="2" Width="45" Height="45" Text="G" FontSize="20"/>
+                <TextBlock Grid.Column="0" Grid.Row="3" Width="45" Height="45" Text="B" FontSize="20"/>
 
                 <Slider x:Name="rSlider" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Maximum="255" IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
                 <Slider x:Name="gSlider" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" Maximum="255" IsSnapToTickEnabled="True" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
@@ -70,12 +70,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="stockButton" Width="200" Height="35">
+                <Button x:Name="stockButton" Width="200" Height="35" Content="STOCK" Click="stockButton_Click">
                     
                     
                 </Button>
 
-                <ListBox Grid.Row="1" Width="244" Height="Auto">
+                <ListBox x:Name="colorList" Grid.Row="1" Width="230" Height="195" FontSize="18" SelectionChanged="colorList_SelectionChanged">
                     
                     
                 </ListBox>

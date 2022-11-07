@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -19,7 +20,9 @@ namespace CollarChecker {
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
-        
+
+        MyColor mycolor = new MyColor();
+
         public MainWindow() {
             InitializeComponent();
 
@@ -59,7 +62,7 @@ namespace CollarChecker {
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
-            var mycolor = (MyColor)((ComboBox)sender).SelectedItem;
+            mycolor = (MyColor)((ComboBox)sender).SelectedItem;
 
             rSlider.Value = mycolor.Color.R;
             gSlider.Value = mycolor.Color.G;
@@ -78,6 +81,18 @@ namespace CollarChecker {
             public Color Color { get; set; }
             public string Name { get; set; }
         }
-        
+
+        private void stockButton_Click(object sender, RoutedEventArgs e) {
+
+
+
+            colorList.Items.Add("R:" + rPoint.Text + " G:" + gPoint.Text + " B:" + bPoint.Text);
+        }
+
+        private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+            
+
+        }
     }
 }
