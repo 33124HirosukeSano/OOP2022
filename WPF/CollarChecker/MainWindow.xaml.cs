@@ -40,6 +40,7 @@ namespace CollarChecker {
         
         private void SetColor() {
 
+
             var nrPoint = byte.Parse(rPoint.Text);
             var ngPoint = byte.Parse(gPoint.Text);
             var nbPoint = byte.Parse(bPoint.Text);
@@ -55,7 +56,7 @@ namespace CollarChecker {
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
 
-
+            ButtonEnabeled();
             SetColor();
 
         }
@@ -90,6 +91,7 @@ namespace CollarChecker {
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
 
+
             MyColor stColor = new MyColor();
             var r = byte.Parse(rPoint.Text);
             var g = byte.Parse(gPoint.Text);
@@ -106,6 +108,8 @@ namespace CollarChecker {
             stockList.Items.Insert(0,colorName?.Name ?? "R:" + r + " G:" + g + " B:" + b);
             colorList.Insert(0,stColor);
 
+            ButtonEnabeled();
+
             //colorList.Items.Add("R:" + rPoint.Text + " G:" + gPoint.Text + " B:" + bPoint.Text);
         }
 
@@ -118,7 +122,9 @@ namespace CollarChecker {
             gPoint.Text = clpg.Remove(clpg.IndexOf("B"));
             bPoint.Text = stockList.SelectedItem.ToString().Remove(0, stockList.SelectedItem.ToString().IndexOf("B")).Substring(2);*/
 
+            if (stockList.SelectedIndex == -1) return;
 
+            
             rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
             gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
             bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
@@ -130,8 +136,28 @@ namespace CollarChecker {
 
         private void deleteButton_Click(object sender, RoutedEventArgs e) {
 
-            stockList.Items.RemoveAt(0);
+            if (stockList.SelectedIndex == -1) return;
+
+            colorList.RemoveAt(stockList.SelectedIndex);
+            stockList.Items.RemoveAt(stockList.SelectedIndex);
+
+            ButtonEnabeled();
 
         }
+
+        private void ButtonEnabeled() {
+
+            if (stockList.Items.Count == 0) {
+
+                deleteButton.IsEnabled = false;
+
+            } else {
+
+                deleteButton.IsEnabled = true;
+
+            }
+
+        }
+
     }
 }
