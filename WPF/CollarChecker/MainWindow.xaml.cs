@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,7 @@ namespace CollarChecker {
     /// </summary>
     public partial class MainWindow : Window {
 
+        List<MyColor> colorList = new List<MyColor>();
         MyColor mycolor = new MyColor();
 
         public MainWindow() {
@@ -42,13 +44,17 @@ namespace CollarChecker {
             var ngPoint = byte.Parse(gPoint.Text);
             var nbPoint = byte.Parse(bPoint.Text);
 
-            SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(nrPoint, ngPoint, nbPoint));
+            Color color = Color.FromRgb(nrPoint, ngPoint, nbPoint);
+            cLabel.Background = new SolidColorBrush(color);
 
-            cLabel.Background = brush;
+            /*SolidColorBrush brush = new SolidColorBrush(Color.FromRgb(nrPoint, ngPoint, nbPoint));
+
+            cLabel.Background = brush;*/
 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
+
 
             SetColor();
 
@@ -62,11 +68,11 @@ namespace CollarChecker {
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
-            mycolor = (MyColor)((ComboBox)sender).SelectedItem;
+            //mycolor = (MyColor)((ComboBox)sender).SelectedItem;
 
-            rSlider.Value = mycolor.Color.R;
-            gSlider.Value = mycolor.Color.G;
-            bSlider.Value = mycolor.Color.B;
+            rSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.R;
+            gSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.G;
+            bSlider.Value = ((MyColor)((ComboBox)sender).SelectedItem).Color.B;
 
             SetColor();
 
@@ -84,14 +90,47 @@ namespace CollarChecker {
 
         private void stockButton_Click(object sender, RoutedEventArgs e) {
 
+            MyColor stColor = new MyColor();
+            var r = byte.Parse(rPoint.Text);
+            var g = byte.Parse(gPoint.Text);
+            var b = byte.Parse(bPoint.Text);
+            stColor.Color = Color.FromRgb(r, g, b);
 
 
-            colorList.Items.Add("R:" + rPoint.Text + " G:" + gPoint.Text + " B:" + bPoint.Text);
+            var colorName = ((IEnumerable<MyColor>)DataContext)
+                                .Where(c => c.Color.R == stColor.Color.R &&
+                                            c.Color.G == stColor.Color.G &&
+                                            c.Color.B == stColor.Color.B).FirstOrDefault();
+
+
+            stockList.Items.Insert(0,colorName?.Name ?? "R:" + r + " G:" + g + " B:" + b);
+            colorList.Insert(0,stColor);
+
+            //colorList.Items.Add("R:" + rPoint.Text + " G:" + gPoint.Text + " B:" + bPoint.Text);
         }
 
         private void colorList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
 
+            /*string clpg;
+
+            rPoint.Text = stockList.SelectedItem.ToString().Remove(stockList.SelectedItem.ToString().IndexOf(" ")).Substring(2);
+            clpg = stockList.SelectedItem.ToString().Remove(0, stockList.SelectedItem.ToString().IndexOf("G")).Substring(2);
+            gPoint.Text = clpg.Remove(clpg.IndexOf("B"));
+            bPoint.Text = stockList.SelectedItem.ToString().Remove(0, stockList.SelectedItem.ToString().IndexOf("B")).Substring(2);*/
+
+
+            rSlider.Value = colorList[stockList.SelectedIndex].Color.R;
+            gSlider.Value = colorList[stockList.SelectedIndex].Color.G;
+            bSlider.Value = colorList[stockList.SelectedIndex].Color.B;
             
+
+            SetColor();
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e) {
+
+            stockList.Items.RemoveAt(0);
 
         }
     }

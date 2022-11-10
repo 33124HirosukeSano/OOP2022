@@ -70,12 +70,12 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="stockButton" Width="200" Height="35" Content="STOCK" Click="stockButton_Click">
-                    
-                    
-                </Button>
+                <Button x:Name="stockButton" Width="120" Height="35" Content="STOCK" Click="stockButton_Click" HorizontalAlignment="Left"/>
 
-                <ListBox x:Name="colorList" Grid.Row="1" Width="230" Height="195" FontSize="18" SelectionChanged="colorList_SelectionChanged">
+                <Button x:Name="deleteButton" Width="120" Height="35" Content="DELETE" Click="deleteButton_Click" HorizontalAlignment="Right"/>
+
+
+                <ListBox x:Name="stockList" Grid.Row="1" Width="230" Height="195" FontSize="18" SelectionChanged="colorList_SelectionChanged">
                     
                     
                 </ListBox>
