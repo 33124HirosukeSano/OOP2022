@@ -212,8 +212,8 @@ namespace WeatherApp {
 
             var json = JsonConvert.DeserializeObject<Rootobject>(dString);
             var json2 = JsonConvert.DeserializeObject<Class1[]>(dString2);
-            tbWeatherInfo.Text = json2[0].timeSeries[0].areas[0].weathers[1];
-            //tbWeatherInfo.Text = json.text;
+            //tbWeatherInfo.Text = json2[0].timeSeries[0].areas[0].weathers[1];
+            tbWeatherInfo.Text = json.text;
 
         }
 
@@ -296,13 +296,13 @@ namespace WeatherApp {
 
 
             String japanUrl = "https://japan-map.com/wp-content/uploads/nihonchizu-color-768x768.png";
-            WebClient webClient = new WebClient();
-            Stream stream = webClient.OpenRead(japanUrl);
+            WebClient japanClient = new WebClient();
+            Stream japanStream = japanClient.OpenRead(japanUrl);
 
-            Bitmap japan = new Bitmap(stream);
-            stream.Close();
+            Bitmap japan = new Bitmap(japanStream);
+            japanStream.Close();
 
-            Image resizedImage = resizeImage(japan, new Size(727, 502));
+            Image resizedImage = resizeImage(japan, new Size(712, 486));
 
             pbJapan.Image = resizedImage;
 
