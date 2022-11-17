@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -19,8 +20,6 @@ namespace WeatherApp {
         public Form1() {
             InitializeComponent();
         }
-
-
 
         private void btWeatherGet_Click(object sender, EventArgs e) {
 
@@ -190,8 +189,20 @@ namespace WeatherApp {
                 case "鹿児島県":
                     dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/460100.json");
                     break;
-                case "沖縄県":
+                case "鹿児島県(奄美群島)":
+                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/460040.json");
+                    break;
+                case "沖縄本島":
                     dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/471000.json");
+                    break;
+                case "大東島":
+                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/472000.json");
+                    break;
+                case "宮古島":
+                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/473000.json");
+                    break;
+                case "八重山列島":
+                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/474000.json");
                     break;
                 default:
                     break;
@@ -208,19 +219,22 @@ namespace WeatherApp {
 
         private void Form1_Load(object sender, EventArgs e) {
 
+            cbRegion.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPrefecture.DropDownStyle = ComboBoxStyle.DropDownList;
+
             dataTable = new DataTable("Region");
 
             dataTable.Columns.Add("region", typeof(string));
             dataTable.Columns.Add("prefecture", typeof(string));
 
-            dataTable.Rows.Add("北海道地方", "宗谷");
-            dataTable.Rows.Add("北海道地方", "上川・留萌");
-            dataTable.Rows.Add("北海道地方", "網走・北見・紋別");
-            dataTable.Rows.Add("北海道地方", "十勝");
-            dataTable.Rows.Add("北海道地方", "釧路・根室");
-            dataTable.Rows.Add("北海道地方", "胆振・日高");
-            dataTable.Rows.Add("北海道地方", "石狩・空知・後志");
-            dataTable.Rows.Add("北海道地方", "渡島・檜山");
+            dataTable.Rows.Add("北海道", "宗谷");
+            dataTable.Rows.Add("北海道", "上川・留萌");
+            dataTable.Rows.Add("北海道", "網走・北見・紋別");
+            dataTable.Rows.Add("北海道", "十勝");
+            dataTable.Rows.Add("北海道", "釧路・根室");
+            dataTable.Rows.Add("北海道", "胆振・日高");
+            dataTable.Rows.Add("北海道", "石狩・空知・後志");
+            dataTable.Rows.Add("北海道", "渡島・檜山");
             dataTable.Rows.Add("東北地方", "青森県");
             dataTable.Rows.Add("東北地方", "岩手県");
             dataTable.Rows.Add("東北地方", "宮城県");
@@ -266,7 +280,11 @@ namespace WeatherApp {
             dataTable.Rows.Add("九州地方", "大分県");
             dataTable.Rows.Add("九州地方", "宮崎県");
             dataTable.Rows.Add("九州地方", "鹿児島県");
-            dataTable.Rows.Add("九州地方", "沖縄県");
+            dataTable.Rows.Add("九州地方", "鹿児島県(奄美群島)");
+            dataTable.Rows.Add("沖縄県", "沖縄本島");
+            dataTable.Rows.Add("沖縄県", "大東島");
+            dataTable.Rows.Add("沖縄県", "宮古島");
+            dataTable.Rows.Add("沖縄県", "八重山列島");
 
             var resultDataTableForArea = dataTable.DefaultView.ToTable(true, new string[] { "region" });
             this.cbRegion.DisplayMember = "region";
@@ -276,7 +294,25 @@ namespace WeatherApp {
 
             this.InitializePrefectureComboBox();
 
+
+            String japanUrl = "https://japan-map.com/wp-content/uploads/nihonchizu-color-768x768.png";
+            WebClient webClient = new WebClient();
+            Stream stream = webClient.OpenRead(japanUrl);
+
+            Bitmap japan = new Bitmap(stream);
+            stream.Close();
+
+            Image resizedImage = resizeImage(japan, new Size(727, 502));
+
+            pbJapan.Image = resizedImage;
+
+
         }
+
+        public static Image resizeImage(Image imgToResize, Size size) {
+            return (Image)(new Bitmap(imgToResize, size));
+        }
+
         private void InitializePrefectureComboBox() {
             var resultDataTableForPrefecture = dataTable.AsEnumerable().Where(
               row => row.Field<string>("region") == this.cbRegion.SelectedValue.ToString())
@@ -293,6 +329,5 @@ namespace WeatherApp {
             this.InitializePrefectureComboBox();
 
         }
- 
     }
 }
