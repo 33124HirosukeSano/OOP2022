@@ -24,7 +24,7 @@ namespace WeatherApp {
         /// コード エディターで変更しないでください。
         /// </summary>
         private void InitializeComponent() {
-            this.tbWeatherInfo = new System.Windows.Forms.TextBox();
+            this.tbWeatherInfoThreedays = new System.Windows.Forms.TextBox();
             this.cbPrefecture = new System.Windows.Forms.ComboBox();
             this.cbRegion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,16 +47,17 @@ namespace WeatherApp {
             ((System.ComponentModel.ISupportInitialize)(this.pbJapan)).BeginInit();
             this.SuspendLayout();
             // 
-            // tbWeatherInfo
+            // tbWeatherInfoThreedays
             // 
-            this.tbWeatherInfo.BackColor = System.Drawing.SystemColors.Window;
-            this.tbWeatherInfo.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.tbWeatherInfo.Location = new System.Drawing.Point(28, 307);
-            this.tbWeatherInfo.Multiline = true;
-            this.tbWeatherInfo.Name = "tbWeatherInfo";
-            this.tbWeatherInfo.ReadOnly = true;
-            this.tbWeatherInfo.Size = new System.Drawing.Size(346, 287);
-            this.tbWeatherInfo.TabIndex = 0;
+            this.tbWeatherInfoThreedays.BackColor = System.Drawing.SystemColors.Window;
+            this.tbWeatherInfoThreedays.Enabled = false;
+            this.tbWeatherInfoThreedays.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbWeatherInfoThreedays.Location = new System.Drawing.Point(28, 307);
+            this.tbWeatherInfoThreedays.Multiline = true;
+            this.tbWeatherInfoThreedays.Name = "tbWeatherInfoThreedays";
+            this.tbWeatherInfoThreedays.ReadOnly = true;
+            this.tbWeatherInfoThreedays.Size = new System.Drawing.Size(346, 287);
+            this.tbWeatherInfoThreedays.TabIndex = 0;
             // 
             // cbPrefecture
             // 
@@ -248,17 +249,17 @@ namespace WeatherApp {
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.Window;
             this.label6.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label6.Location = new System.Drawing.Point(572, 199);
+            this.label6.Location = new System.Drawing.Point(518, 215);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(236, 27);
+            this.label6.Size = new System.Drawing.Size(318, 27);
             this.label6.TabIndex = 18;
-            this.label6.Text = "調べる地域をクリック";
+            this.label6.Text = "詳しく知りたい地域をクリック";
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 606);
+            this.ClientSize = new System.Drawing.Size(1317, 606);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbToday);
             this.Controls.Add(this.label5);
@@ -278,7 +279,7 @@ namespace WeatherApp {
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbRegion);
             this.Controls.Add(this.cbPrefecture);
-            this.Controls.Add(this.tbWeatherInfo);
+            this.Controls.Add(this.tbWeatherInfoThreedays);
             this.Name = "mainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -290,7 +291,7 @@ namespace WeatherApp {
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbWeatherInfo;
+        private System.Windows.Forms.TextBox tbWeatherInfoThreedays;
         private System.Windows.Forms.ComboBox cbPrefecture;
         private System.Windows.Forms.ComboBox cbRegion;
         private System.Windows.Forms.Label label1;

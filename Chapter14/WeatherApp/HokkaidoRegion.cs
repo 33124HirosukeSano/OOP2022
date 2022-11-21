@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ using System.Windows.Forms;
 
 namespace WeatherApp {
     public partial class HokkaidoRegion : Form {
+        string dStringWeather;
+
         public HokkaidoRegion() {
             InitializeComponent();
         }
@@ -35,5 +38,21 @@ namespace WeatherApp {
             return (Image)(new Bitmap(imgToResize, size));
         }
 
+        private void btSoya_Click(object sender, EventArgs e) {
+
+            var wc = new WebClient() {
+
+                Encoding = Encoding.UTF8
+
+            };
+
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/011000.json");
+            var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
+            tbHokkaidoToday.Text = json[0].timeSeries[0].areas[0].weathers[0];
+            tbTomorrow.Text = json[0].timeSeries[0].areas[0].weathers[1];
+            tbDAT.Text = json[0].timeSeries[0].areas[0].weathers[2];
+            tbHokkaidoRegion.Text = "宗谷";
+
+        }
     }
 }

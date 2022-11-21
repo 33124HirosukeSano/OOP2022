@@ -265,8 +265,8 @@ namespace WeatherApp {
 
             var json = JsonConvert.DeserializeObject<Rootobject>(dString);
             var json2 = JsonConvert.DeserializeObject<Class1[]>(dStringToday);
-            tbToday.Text = json2[0].timeSeries[0].areas[0].weathers[1];
-            tbWeatherInfo.Text = json.text;
+            tbToday.Text = json2[0].timeSeries[0].areas[0].weathers[0];
+            tbWeatherInfoThreedays.Text = json.text;
 
         }
 
@@ -357,6 +357,13 @@ namespace WeatherApp {
 
             pbJapan.Image = resizedImage;
 
+            var wc = new WebClient() {
+
+                Encoding = Encoding.UTF8
+
+            };
+
+            dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/430000.json");
 
         }
 
