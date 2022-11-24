@@ -375,7 +375,7 @@ namespace WeatherApp {
             }
 
             if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) {
-                DialogResult result = MessageBox.Show("インターネットに接続されていません。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show("インターネットに接続されていません。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (result == DialogResult.OK) {
                     this.Close();
                 }

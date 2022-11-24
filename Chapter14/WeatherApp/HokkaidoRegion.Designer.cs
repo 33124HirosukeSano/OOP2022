@@ -32,7 +32,6 @@ namespace WeatherApp {
             this.btIHi = new System.Windows.Forms.Button();
             this.btISoSi = new System.Windows.Forms.Button();
             this.btOHi = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tbHokkaidoToday = new System.Windows.Forms.TextBox();
             this.tbTomorrow = new System.Windows.Forms.TextBox();
             this.tbDAT = new System.Windows.Forms.TextBox();
@@ -46,6 +45,7 @@ namespace WeatherApp {
             this.pbToday = new System.Windows.Forms.PictureBox();
             this.pbTomorrow = new System.Windows.Forms.PictureBox();
             this.pbDAT = new System.Windows.Forms.PictureBox();
+            this.btReturn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbHokkaido)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbToday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTomorrow)).BeginInit();
@@ -125,42 +125,38 @@ namespace WeatherApp {
             this.btOHi.Text = "渡島・檜山";
             this.btOHi.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(300, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 29);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "の予報";
-            // 
             // tbHokkaidoToday
             // 
-            this.tbHokkaidoToday.Location = new System.Drawing.Point(104, 200);
+            this.tbHokkaidoToday.Location = new System.Drawing.Point(109, 26);
+            this.tbHokkaidoToday.Multiline = true;
             this.tbHokkaidoToday.Name = "tbHokkaidoToday";
-            this.tbHokkaidoToday.Size = new System.Drawing.Size(276, 19);
+            this.tbHokkaidoToday.ReadOnly = true;
+            this.tbHokkaidoToday.Size = new System.Drawing.Size(159, 49);
             this.tbHokkaidoToday.TabIndex = 6;
             // 
             // tbTomorrow
             // 
-            this.tbTomorrow.Location = new System.Drawing.Point(104, 279);
+            this.tbTomorrow.Location = new System.Drawing.Point(167, 26);
+            this.tbTomorrow.Multiline = true;
             this.tbTomorrow.Name = "tbTomorrow";
-            this.tbTomorrow.Size = new System.Drawing.Size(276, 19);
+            this.tbTomorrow.ReadOnly = true;
+            this.tbTomorrow.Size = new System.Drawing.Size(159, 49);
             this.tbTomorrow.TabIndex = 7;
             // 
             // tbDAT
             // 
-            this.tbDAT.Location = new System.Drawing.Point(104, 358);
+            this.tbDAT.Location = new System.Drawing.Point(227, 26);
+            this.tbDAT.Multiline = true;
             this.tbDAT.Name = "tbDAT";
-            this.tbDAT.Size = new System.Drawing.Size(276, 19);
+            this.tbDAT.ReadOnly = true;
+            this.tbDAT.Size = new System.Drawing.Size(159, 49);
             this.tbDAT.TabIndex = 8;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(6, 200);
+            this.label2.Location = new System.Drawing.Point(9, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 19);
             this.label2.TabIndex = 5;
@@ -170,7 +166,7 @@ namespace WeatherApp {
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label3.Location = new System.Drawing.Point(6, 279);
+            this.label3.Location = new System.Drawing.Point(115, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 19);
             this.label3.TabIndex = 5;
@@ -190,7 +186,7 @@ namespace WeatherApp {
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("MS UI Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.Location = new System.Drawing.Point(6, 358);
+            this.label5.Location = new System.Drawing.Point(232, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 19);
             this.label5.TabIndex = 5;
@@ -227,15 +223,16 @@ namespace WeatherApp {
             // 
             // pbToday
             // 
-            this.pbToday.Location = new System.Drawing.Point(422, 186);
+            this.pbToday.Location = new System.Drawing.Point(13, 156);
             this.pbToday.Name = "pbToday";
             this.pbToday.Size = new System.Drawing.Size(100, 50);
+            this.pbToday.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbToday.TabIndex = 10;
             this.pbToday.TabStop = false;
             // 
             // pbTomorrow
             // 
-            this.pbTomorrow.Location = new System.Drawing.Point(422, 268);
+            this.pbTomorrow.Location = new System.Drawing.Point(119, 156);
             this.pbTomorrow.Name = "pbTomorrow";
             this.pbTomorrow.Size = new System.Drawing.Size(100, 50);
             this.pbTomorrow.TabIndex = 10;
@@ -243,17 +240,28 @@ namespace WeatherApp {
             // 
             // pbDAT
             // 
-            this.pbDAT.Location = new System.Drawing.Point(422, 347);
+            this.pbDAT.Location = new System.Drawing.Point(236, 156);
             this.pbDAT.Name = "pbDAT";
             this.pbDAT.Size = new System.Drawing.Size(100, 50);
             this.pbDAT.TabIndex = 10;
             this.pbDAT.TabStop = false;
+            // 
+            // btReturn
+            // 
+            this.btReturn.Location = new System.Drawing.Point(10, 9);
+            this.btReturn.Name = "btReturn";
+            this.btReturn.Size = new System.Drawing.Size(75, 23);
+            this.btReturn.TabIndex = 11;
+            this.btReturn.Text = "戻る";
+            this.btReturn.UseVisualStyleBackColor = true;
+            this.btReturn.Click += new System.EventHandler(this.btReturn_Click);
             // 
             // HokkaidoRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 606);
+            this.Controls.Add(this.btReturn);
             this.Controls.Add(this.pbDAT);
             this.Controls.Add(this.pbTomorrow);
             this.Controls.Add(this.pbToday);
@@ -267,7 +275,6 @@ namespace WeatherApp {
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btOHi);
             this.Controls.Add(this.btIHi);
             this.Controls.Add(this.btKuNe);
@@ -298,7 +305,6 @@ namespace WeatherApp {
         private System.Windows.Forms.Button btIHi;
         private System.Windows.Forms.Button btISoSi;
         private System.Windows.Forms.Button btOHi;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbHokkaidoToday;
         private System.Windows.Forms.TextBox tbTomorrow;
         private System.Windows.Forms.TextBox tbDAT;
@@ -312,5 +318,6 @@ namespace WeatherApp {
         private System.Windows.Forms.PictureBox pbToday;
         private System.Windows.Forms.PictureBox pbTomorrow;
         private System.Windows.Forms.PictureBox pbDAT;
+        private System.Windows.Forms.Button btReturn;
     }
 }
