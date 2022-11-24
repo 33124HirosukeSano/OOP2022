@@ -50,9 +50,32 @@ namespace WeatherApp {
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
             tbHokkaidoToday.Text = json[0].timeSeries[0].areas[0].weathers[0];
             tbTomorrow.Text = json[0].timeSeries[0].areas[0].weathers[1];
-            tbDAT.Text = json[0].timeSeries[0].areas[0].weathers[2];
-            tbHokkaidoRegion.Text = "宗谷";
+            try {
+
+                tbDAT.Text = json[0].timeSeries[0].areas[0].weathers[2];
+
+            }
+            catch (IndexOutOfRangeException) {
+
+                
+            }
+            
+            lbHokkaidoRegion.Text = "宗谷";
+
+            InitializePrefectureComboBox();
 
         }
+
+        private void InitializePrefectureComboBox() {
+
+            var jsonCode = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
+            if (jsonCode[0].timeSeries[0].areas[0].weatherCodes[0] == "111") {
+
+                pbToday.ImageLocation = "https://www.jma.go.jp/bosai/forecast/img/110.svg";
+                
+            }
+            
+        }
+
     }
 }

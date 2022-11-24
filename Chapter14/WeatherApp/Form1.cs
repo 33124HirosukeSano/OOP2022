@@ -30,243 +30,250 @@ namespace WeatherApp {
 
             };
 
-            switch (cbPrefecture.Text) {
-                case "宗谷":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/011000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/011000.json");
-                    break;
-                case "上川・留萌":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/012000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/012000.json");
-                    break;
-                case "網走・北見・紋別":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/013000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/013000.json");
-                    break;
-                case "釧路・根室":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/014100.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/014100.json");
-                    break;
-                case "胆振・日高":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/015000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/015000.json");
-                    break;
-                case "石狩・空知・後志":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/016000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/016000.json");
-                    break;
-                case "渡島・檜山":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/017000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/017000.json");
-                    break;
-                case "青森県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/020000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/020000.json");
-                    break;
-                case "岩手県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/030000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/030000.json");
-                    break;
-                case "宮城県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/040000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/040000.json");
-                    break;
-                case "秋田県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/050000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/050000.json");
-                    break;
-                case "山形県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/060000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/060000.json");
-                    break;
-                case "福島県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json");
-                    break;
-                case "茨城県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/080000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/080000.json");
-                    break;
-                case "栃木県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/090000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/090000.json");
-                    break;
-                case "群馬県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/100000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/100000.json");
-                    break;
-                case "埼玉県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/110000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/110000.json");
-                    break;
-                case "千葉県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/120000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/120000.json");
-                    break;
-                case "東京都":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json");
-                    break;
-                case "神奈川県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/140000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/140000.json");
-                    break;
-                case "新潟県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/150000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/150000.json");
-                    break;
-                case "富山県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/160000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/160000.json");
-                    break;
-                case "石川県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/170000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/170000.json");
-                    break;
-                case "福井県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/180000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/180000.json");
-                    break;
-                case "山梨県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/190000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/190000.json");
-                    break;
-                case "長野県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/200000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/200000.json");
-                    break;
-                case "岐阜県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/210000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json");
-                    break;
-                case "静岡県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/220000.json");
-                    break;
-                case "愛知県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/230000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json");
-                    break;
-                case "三重県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/240000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/240000.json");
-                    break;
-                case "滋賀県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/250000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/250000.json");
-                    break;
-                case "京都府":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/260000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/260000.json");
-                    break;
-                case "大阪府":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/270000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/270000.json");
-                    break;
-                case "兵庫県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/280000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/280000.json");
-                    break;
-                case "奈良県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/290000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/290000.json");
-                    break;
-                case "和歌山県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/300000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/300000.json");
-                    break;
-                case "鳥取県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/310000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/310000.json");
-                    break;
-                case "島根県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/320000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/320000.json");
-                    break;
-                case "岡山県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/330000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/330000.json");
-                    break;
-                case "広島県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/340000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/340000.json");
-                    break;
-                case "山口県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/350000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/350000.json");
-                    break;
-                case "徳島県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/360000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/360000.json");
-                    break;
-                case "香川県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/370000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/370000.json");
-                    break;
-                case "愛媛県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/380000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/380000.json");
-                    break;
-                case "高知県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/390000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/390000.json");
-                    break;
-                case "福岡県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/400000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/400000.json");
-                    break;
-                case "佐賀県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/410000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/410000.json");
-                    break;
-                case "長崎県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/420000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/420000.json");
-                    break;
-                case "熊本県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/430000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/430000.json");
-                    break;
-                case "大分県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/440000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/440000.json");
-                    break;
-                case "宮崎県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/450000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/450000.json");
-                    break;
-                case "鹿児島県":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/460100.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/460100.json");
-                    break;
-                case "沖縄本島":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/471000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/471000.json");
-                    break;
-                case "大東島":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/472000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/472000.json");
-                    break;
-                case "宮古島":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/473000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/473000.json");
-                    break;
-                case "八重山列島":
-                    dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/474000.json");
-                    dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/474000.json");
-                    break;
-                default:
-                    break;
+            try {
+                switch (cbPrefecture.Text) {
+                    case "宗谷":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/011000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/011000.json");
+                        break;
+                    case "上川・留萌":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/012000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/012000.json");
+                        break;
+                    case "網走・北見・紋別":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/013000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/013000.json");
+                        break;
+                    case "釧路・根室":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/014100.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/014100.json");
+                        break;
+                    case "胆振・日高":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/015000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/015000.json");
+                        break;
+                    case "石狩・空知・後志":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/016000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/016000.json");
+                        break;
+                    case "渡島・檜山":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/017000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/017000.json");
+                        break;
+                    case "青森県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/020000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/020000.json");
+                        break;
+                    case "岩手県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/030000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/030000.json");
+                        break;
+                    case "宮城県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/040000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/040000.json");
+                        break;
+                    case "秋田県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/050000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/050000.json");
+                        break;
+                    case "山形県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/060000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/060000.json");
+                        break;
+                    case "福島県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/070000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/070000.json");
+                        break;
+                    case "茨城県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/080000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/080000.json");
+                        break;
+                    case "栃木県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/090000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/090000.json");
+                        break;
+                    case "群馬県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/100000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/100000.json");
+                        break;
+                    case "埼玉県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/110000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/110000.json");
+                        break;
+                    case "千葉県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/120000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/120000.json");
+                        break;
+                    case "東京都":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/130000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/130000.json");
+                        break;
+                    case "神奈川県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/140000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/140000.json");
+                        break;
+                    case "新潟県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/150000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/150000.json");
+                        break;
+                    case "富山県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/160000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/160000.json");
+                        break;
+                    case "石川県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/170000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/170000.json");
+                        break;
+                    case "福井県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/180000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/180000.json");
+                        break;
+                    case "山梨県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/190000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/190000.json");
+                        break;
+                    case "長野県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/200000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/200000.json");
+                        break;
+                    case "岐阜県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/210000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json");
+                        break;
+                    case "静岡県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/220000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/220000.json");
+                        break;
+                    case "愛知県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/230000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json");
+                        break;
+                    case "三重県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/240000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/240000.json");
+                        break;
+                    case "滋賀県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/250000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/250000.json");
+                        break;
+                    case "京都府":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/260000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/260000.json");
+                        break;
+                    case "大阪府":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/270000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/270000.json");
+                        break;
+                    case "兵庫県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/280000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/280000.json");
+                        break;
+                    case "奈良県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/290000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/290000.json");
+                        break;
+                    case "和歌山県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/300000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/300000.json");
+                        break;
+                    case "鳥取県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/310000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/310000.json");
+                        break;
+                    case "島根県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/320000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/320000.json");
+                        break;
+                    case "岡山県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/330000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/330000.json");
+                        break;
+                    case "広島県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/340000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/340000.json");
+                        break;
+                    case "山口県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/350000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/350000.json");
+                        break;
+                    case "徳島県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/360000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/360000.json");
+                        break;
+                    case "香川県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/370000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/370000.json");
+                        break;
+                    case "愛媛県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/380000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/380000.json");
+                        break;
+                    case "高知県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/390000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/390000.json");
+                        break;
+                    case "福岡県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/400000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/400000.json");
+                        break;
+                    case "佐賀県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/410000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/410000.json");
+                        break;
+                    case "長崎県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/420000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/420000.json");
+                        break;
+                    case "熊本県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/430000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/430000.json");
+                        break;
+                    case "大分県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/440000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/440000.json");
+                        break;
+                    case "宮崎県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/450000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/450000.json");
+                        break;
+                    case "鹿児島県":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/460100.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/460100.json");
+                        break;
+                    case "沖縄本島":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/471000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/471000.json");
+                        break;
+                    case "大東島":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/472000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/472000.json");
+                        break;
+                    case "宮古島":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/473000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/473000.json");
+                        break;
+                    case "八重山列島":
+                        dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/474000.json");
+                        dStringToday = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/474000.json");
+                        break;
+                    default:
+                        break;
 
 
+                }
+
+                var dString2 = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/100000.json");
+
+                var json = JsonConvert.DeserializeObject<Rootobject>(dString);
+                var json2 = JsonConvert.DeserializeObject<Class1[]>(dStringToday);
+                tbToday.Text = json2[0].timeSeries[0].areas[0].weathers[0];
+                tbWeatherInfoThreedays.Text = json.text;
             }
+            catch (WebException) {
 
-            var dString2 = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/100000.json");
-
-            var json = JsonConvert.DeserializeObject<Rootobject>(dString);
-            var json2 = JsonConvert.DeserializeObject<Class1[]>(dStringToday);
-            tbToday.Text = json2[0].timeSeries[0].areas[0].weathers[0];
-            tbWeatherInfoThreedays.Text = json.text;
+             
+            }
+            
 
         }
 
@@ -348,22 +355,31 @@ namespace WeatherApp {
 
             String japanUrl = "https://japan-map.com/wp-content/uploads/nihonchizu-color-768x768.png";
             WebClient japanClient = new WebClient();
-            Stream japanStream = japanClient.OpenRead(japanUrl);
+            try {
+                Stream japanStream = japanClient.OpenRead(japanUrl);
+                Bitmap japan = new Bitmap(japanStream);
+                japanStream.Close();
+                Image resizedImage = resizeImage(japan, new Size(712, 585));
+                pbJapan.Image = resizedImage;
+                var wc = new WebClient() {
 
-            Bitmap japan = new Bitmap(japanStream);
-            japanStream.Close();
+                    Encoding = Encoding.UTF8
 
-            Image resizedImage = resizeImage(japan, new Size(712, 585));
+                };
 
-            pbJapan.Image = resizedImage;
+                dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/430000.json");
+            }
+            catch (Exception) {
 
-            var wc = new WebClient() {
+                
+            }
 
-                Encoding = Encoding.UTF8
-
-            };
-
-            dString = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/overview_forecast/430000.json");
+            if (!System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable()) {
+                DialogResult result = MessageBox.Show("インターネットに接続されていません。", "注意", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (result == DialogResult.OK) {
+                    this.Close();
+                }
+            }
 
         }
 
