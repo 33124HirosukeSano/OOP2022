@@ -50,7 +50,7 @@ namespace WeatherApp {
             // 
             this.tbWeatherInfoThreedays.BackColor = System.Drawing.SystemColors.Window;
             this.tbWeatherInfoThreedays.Enabled = false;
-            this.tbWeatherInfoThreedays.Font = new System.Drawing.Font("MS UI Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.tbWeatherInfoThreedays.Font = new System.Drawing.Font("MS UI Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.tbWeatherInfoThreedays.Location = new System.Drawing.Point(28, 307);
             this.tbWeatherInfoThreedays.Multiline = true;
             this.tbWeatherInfoThreedays.Name = "tbWeatherInfoThreedays";
@@ -267,6 +267,7 @@ namespace WeatherApp {
             this.Controls.Add(this.cbRegion);
             this.Controls.Add(this.cbPrefecture);
             this.Controls.Add(this.tbWeatherInfoThreedays);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "mainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
