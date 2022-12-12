@@ -412,11 +412,77 @@ namespace WeatherApp {
             if (form2.ShowDialog() == DialogResult.Cancel) {
                 this.Show();
             }
-
-
-
         }
 
+        private void btTohoku_Click(object sender, EventArgs e) {
+
+            var form2 = new TohokuRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btKanto_Click(object sender, EventArgs e) {
+
+            var form2 = new KantoRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btChubu_Click(object sender, EventArgs e) {
+
+            var form2 = new ChubuRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btKinki_Click(object sender, EventArgs e) {
+
+            var form2 = new KinkiRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btChugoku_Click(object sender, EventArgs e) {
+
+            var form2 = new ChugokuRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btSikoku_Click(object sender, EventArgs e) {
+
+            var form2 = new SikokuRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
+
+        private void btKyusyu_Click(object sender, EventArgs e) {
+
+            var form2 = new KyusyuRegion();
+
+            this.Hide();
+            if (form2.ShowDialog() == DialogResult.Cancel) {
+                this.Show();
+            }
+        }
     }
     
 }

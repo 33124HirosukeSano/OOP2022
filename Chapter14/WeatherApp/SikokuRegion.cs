@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WeatherApp {
-    public partial class HokkaidoRegion : Form {
+    public partial class SikokuRegion : Form {
         string dStringWeather;
 
-        public HokkaidoRegion() {
+        public SikokuRegion() {
             InitializeComponent();
         }
 
-        private void HokkaidoRegion_Load(object sender, EventArgs e) {
+        private void SikokuRegion_Load(object sender, EventArgs e) {
 
             DateTime dtToday = DateTime.Today;
             DateTime dtTomorrow = dtToday.AddDays(1);
@@ -45,8 +45,8 @@ namespace WeatherApp {
             string resultISeD = dtISeD.ToString("MM/dd");
             lbISeD.Text = resultISeD;
 
-            pbHokkaido.ImageLocation = "https://japan-map.com/wp-content/uploads/hokkaido.png";
-            
+            pbKanto.ImageLocation = "https://japan-map.com/wp-content/uploads/shikoku.png";
+
 
             var wc = new WebClient() {
 
@@ -54,10 +54,10 @@ namespace WeatherApp {
 
             };
 
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/011000.json");
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/360000.json");
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
 
-            lbHokkaidoRegion.Text = "宗谷の天気予報";
+            lbSikokuRegion.Text = "徳島県の天気予報";
 
             WeatherAndTemperture();
 
@@ -67,22 +67,6 @@ namespace WeatherApp {
             return (Image)(new Bitmap(imgToResize, size));
         }
 
-        private void btSoya_Click(object sender, EventArgs e) {
-
-            var wc = new WebClient() {
-
-                Encoding = Encoding.UTF8
-
-            };
-
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/011000.json");
-            var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
-            
-            lbHokkaidoRegion.Text = "宗谷の天気予報";
-
-            WeatherAndTemperture();
-
-        }
 
         private void WeatherAndTemperture() {
 
@@ -2985,7 +2969,7 @@ namespace WeatherApp {
 
         }
 
-        private void btKaRu_Click(object sender, EventArgs e) {
+        private void btTokushima_Click(object sender, EventArgs e) {
 
             var wc = new WebClient() {
 
@@ -2993,90 +2977,60 @@ namespace WeatherApp {
 
             };
 
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/012000.json");
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/360000.json");
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
 
-            lbHokkaidoRegion.Text = "上川・留萌の天気予報";
-
-            WeatherAndTemperture();
-
-        }
-
-        private void btAKiMo_Click(object sender, EventArgs e) {
-
-            var wc = new WebClient() {
-
-                Encoding = Encoding.UTF8
-
-            };
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/013000.json");
-            var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
-
-            lbHokkaidoRegion.Text = "網走・北見・紋別の天気予報";
-
-            WeatherAndTemperture();
-
-        }
-
-        private void btKuNe_Click(object sender, EventArgs e) {
-            var wc = new WebClient() {
-
-                Encoding = Encoding.UTF8
-
-            };
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/014100.json");
-            var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
-
-            lbHokkaidoRegion.Text = "釧路・根室の天気予報";
+            lbSikokuRegion.Text = "徳島県の天気予報";
 
             WeatherAndTemperture();
         }
 
-        private void btIHi_Click(object sender, EventArgs e) {
-            
+        private void btKagawa_Click(object sender, EventArgs e) {
+
             var wc = new WebClient() {
 
                 Encoding = Encoding.UTF8
 
             };
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/015000.json");
+
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/370000.json");
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
 
-            lbHokkaidoRegion.Text = "胆振・日高の天気予報";
+            lbSikokuRegion.Text = "香川県の天気予報";
 
             WeatherAndTemperture();
         }
 
-        private void btISoSi_Click(object sender, EventArgs e) {
+        private void btEhime_Click(object sender, EventArgs e) {
 
             var wc = new WebClient() {
 
                 Encoding = Encoding.UTF8
 
             };
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/016000.json");
+
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/380000.json");
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
 
-            lbHokkaidoRegion.Text = "石狩・空知・後志の天気予報";
+            lbSikokuRegion.Text = "愛媛県の天気予報";
 
             WeatherAndTemperture();
-
         }
 
-        private void btOHi_Click(object sender, EventArgs e) {
+        private void btKoti_Click(object sender, EventArgs e) {
 
             var wc = new WebClient() {
 
                 Encoding = Encoding.UTF8
 
             };
-            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/017000.json");
+
+            dStringWeather = wc.DownloadString("https://www.jma.go.jp/bosai/forecast/data/forecast/390000.json");
             var json = JsonConvert.DeserializeObject<Class1[]>(dStringWeather);
 
-            lbHokkaidoRegion.Text = "渡島・檜山の天気予報";
+            lbSikokuRegion.Text = "高知県の天気予報";
 
             WeatherAndTemperture();
-
         }
     }
 }

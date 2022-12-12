@@ -31,14 +31,14 @@ namespace WeatherApp {
             this.label2 = new System.Windows.Forms.Label();
             this.pbJapan = new System.Windows.Forms.PictureBox();
             this.btHokkaido = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.btTohoku = new System.Windows.Forms.Button();
+            this.btKanto = new System.Windows.Forms.Button();
+            this.btChubu = new System.Windows.Forms.Button();
+            this.btKinki = new System.Windows.Forms.Button();
+            this.btChugoku = new System.Windows.Forms.Button();
+            this.btSikoku = new System.Windows.Forms.Button();
+            this.btKyusyu = new System.Windows.Forms.Button();
+            this.btOkinawa = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -127,79 +127,77 @@ namespace WeatherApp {
             this.btHokkaido.UseVisualStyleBackColor = true;
             this.btHokkaido.Click += new System.EventHandler(this.btHokkaido_Click);
             // 
-            // button2
+            // btTohoku
             // 
-            this.button2.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button2.Location = new System.Drawing.Point(878, 235);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "東北地方";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btTohoku.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btTohoku.Location = new System.Drawing.Point(878, 235);
+            this.btTohoku.Name = "btTohoku";
+            this.btTohoku.Size = new System.Drawing.Size(75, 23);
+            this.btTohoku.TabIndex = 7;
+            this.btTohoku.Text = "東北地方";
+            this.btTohoku.UseVisualStyleBackColor = true;
+            this.btTohoku.Click += new System.EventHandler(this.btTohoku_Click);
             // 
-            // button3
+            // btKanto
             // 
-            this.button3.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button3.Location = new System.Drawing.Point(842, 362);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "関東地方";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btKanto.Font = new System.Drawing.Font("MS UI Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btKanto.Location = new System.Drawing.Point(842, 362);
+            this.btKanto.Name = "btKanto";
+            this.btKanto.Size = new System.Drawing.Size(75, 23);
+            this.btKanto.TabIndex = 8;
+            this.btKanto.Text = "関東地方";
+            this.btKanto.UseVisualStyleBackColor = true;
+            this.btKanto.Click += new System.EventHandler(this.btKanto_Click);
             // 
-            // button4
+            // btChubu
             // 
-            this.button4.Location = new System.Drawing.Point(761, 371);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "中部地方";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btChubu.Location = new System.Drawing.Point(761, 371);
+            this.btChubu.Name = "btChubu";
+            this.btChubu.Size = new System.Drawing.Size(75, 23);
+            this.btChubu.TabIndex = 9;
+            this.btChubu.Text = "中部地方";
+            this.btChubu.UseVisualStyleBackColor = true;
+            this.btChubu.Click += new System.EventHandler(this.btChubu_Click);
             // 
-            // button5
+            // btKinki
             // 
-            this.button5.Location = new System.Drawing.Point(689, 413);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 10;
-            this.button5.Text = "近畿地方";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btKinki.Location = new System.Drawing.Point(689, 413);
+            this.btKinki.Name = "btKinki";
+            this.btKinki.Size = new System.Drawing.Size(75, 23);
+            this.btKinki.TabIndex = 10;
+            this.btKinki.Text = "近畿地方";
+            this.btKinki.UseVisualStyleBackColor = true;
+            this.btKinki.Click += new System.EventHandler(this.btKinki_Click);
             // 
-            // button6
+            // btChugoku
             // 
-            this.button6.Location = new System.Drawing.Point(595, 403);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "中国地方";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btChugoku.Location = new System.Drawing.Point(595, 403);
+            this.btChugoku.Name = "btChugoku";
+            this.btChugoku.Size = new System.Drawing.Size(75, 23);
+            this.btChugoku.TabIndex = 11;
+            this.btChugoku.Text = "中国地方";
+            this.btChugoku.UseVisualStyleBackColor = true;
+            this.btChugoku.Click += new System.EventHandler(this.btChugoku_Click);
             // 
-            // button7
+            // btSikoku
             // 
-            this.button7.Location = new System.Drawing.Point(612, 449);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "四国地方";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btSikoku.Location = new System.Drawing.Point(612, 449);
+            this.btSikoku.Name = "btSikoku";
+            this.btSikoku.Size = new System.Drawing.Size(75, 23);
+            this.btSikoku.TabIndex = 12;
+            this.btSikoku.Text = "四国地方";
+            this.btSikoku.UseVisualStyleBackColor = true;
+            this.btSikoku.Click += new System.EventHandler(this.btSikoku_Click);
             // 
-            // button8
+            // btKyusyu
             // 
-            this.button8.Location = new System.Drawing.Point(510, 479);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "九州地方";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(917, 532);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "沖縄県";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btKyusyu.Location = new System.Drawing.Point(510, 479);
+            this.btKyusyu.Name = "btKyusyu";
+            this.btKyusyu.Size = new System.Drawing.Size(75, 23);
+            this.btKyusyu.TabIndex = 13;
+            this.btKyusyu.Text = "九州地方";
+            this.btKyusyu.UseVisualStyleBackColor = true;
+            this.btKyusyu.Click += new System.EventHandler(this.btKyusyu_Click);
             // 
             // label3
             // 
@@ -252,14 +250,14 @@ namespace WeatherApp {
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btOkinawa);
+            this.Controls.Add(this.btKyusyu);
+            this.Controls.Add(this.btSikoku);
+            this.Controls.Add(this.btChugoku);
+            this.Controls.Add(this.btKinki);
+            this.Controls.Add(this.btChubu);
+            this.Controls.Add(this.btKanto);
+            this.Controls.Add(this.btTohoku);
             this.Controls.Add(this.btHokkaido);
             this.Controls.Add(this.pbJapan);
             this.Controls.Add(this.label2);
@@ -286,14 +284,14 @@ namespace WeatherApp {
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pbJapan;
         private System.Windows.Forms.Button btHokkaido;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btTohoku;
+        private System.Windows.Forms.Button btKanto;
+        private System.Windows.Forms.Button btChubu;
+        private System.Windows.Forms.Button btKinki;
+        private System.Windows.Forms.Button btChugoku;
+        private System.Windows.Forms.Button btSikoku;
+        private System.Windows.Forms.Button btKyusyu;
+        private System.Windows.Forms.Button btOkinawa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
