@@ -38,7 +38,6 @@ namespace WeatherApp {
             this.btChugoku = new System.Windows.Forms.Button();
             this.btSikoku = new System.Windows.Forms.Button();
             this.btKyusyu = new System.Windows.Forms.Button();
-            this.btOkinawa = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -250,7 +249,6 @@ namespace WeatherApp {
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btOkinawa);
             this.Controls.Add(this.btKyusyu);
             this.Controls.Add(this.btSikoku);
             this.Controls.Add(this.btChugoku);
@@ -267,7 +265,7 @@ namespace WeatherApp {
             this.Controls.Add(this.tbWeatherInfoThreedays);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "mainForm";
-            this.Text = "Form1";
+            this.Text = "沖縄";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbJapan)).EndInit();
             this.ResumeLayout(false);
@@ -291,7 +289,6 @@ namespace WeatherApp {
         private System.Windows.Forms.Button btChugoku;
         private System.Windows.Forms.Button btSikoku;
         private System.Windows.Forms.Button btKyusyu;
-        private System.Windows.Forms.Button btOkinawa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
